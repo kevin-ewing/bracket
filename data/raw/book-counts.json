@@ -1,0 +1,836 @@
+[
+  {
+    "id": 1342,
+    "title": "Pride and Prejudice",
+    "authors": [
+      {
+        "name": "Austen, Jane",
+        "birth_year": 1775,
+        "death_year": 1817
+      }
+    ],
+    "words": 126909,
+    "url": "https://www.gutenberg.org/ebooks/1342.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/1342"
+  },
+  {
+    "id": 84,
+    "title": "Frankenstein; or, The modern Prometheus",
+    "authors": [
+      {
+        "name": "Shelley, Mary Wollstonecraft",
+        "birth_year": 1797,
+        "death_year": 1851
+      }
+    ],
+    "words": 75009,
+    "url": "https://www.gutenberg.org/ebooks/84.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/84"
+  },
+  {
+    "id": 2701,
+    "title": "Moby Dick; Or, The Whale",
+    "authors": [
+      {
+        "name": "Melville, Herman",
+        "birth_year": 1819,
+        "death_year": 1891
+      }
+    ],
+    "words": 213532,
+    "url": "https://www.gutenberg.org/ebooks/2701.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/2701"
+  },
+  {
+    "id": 11,
+    "title": "Alice's Adventures in Wonderland",
+    "authors": [
+      {
+        "name": "Carroll, Lewis",
+        "birth_year": 1832,
+        "death_year": 1898
+      }
+    ],
+    "words": 26392,
+    "url": "https://www.gutenberg.org/ebooks/11.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/11"
+  },
+  {
+    "id": 1661,
+    "title": "The Adventures of Sherlock Holmes",
+    "authors": [
+      {
+        "name": "Doyle, Arthur Conan",
+        "birth_year": 1859,
+        "death_year": 1930
+      }
+    ],
+    "words": 104427,
+    "url": "https://www.gutenberg.org/ebooks/1661.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/1661"
+  },
+  {
+    "id": 37683,
+    "title": "Chambers's Twentieth Century Dictionary (part 1 of 4: A-D)",
+    "authors": [],
+    "words": 315219,
+    "url": "https://www.gutenberg.org/ebooks/37683.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/37683"
+  },
+  {
+    "id": 1513,
+    "title": "Romeo and Juliet",
+    "authors": [
+      {
+        "name": "Shakespeare, William",
+        "birth_year": 1564,
+        "death_year": 1616
+      }
+    ],
+    "words": 25869,
+    "url": "https://www.gutenberg.org/ebooks/1513.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/1513"
+  },
+  {
+    "id": 345,
+    "title": "Dracula",
+    "authors": [
+      {
+        "name": "Stoker, Bram",
+        "birth_year": 1847,
+        "death_year": 1912
+      }
+    ],
+    "words": 160939,
+    "url": "https://www.gutenberg.org/ebooks/345.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/345"
+  },
+  {
+    "id": 100,
+    "title": "The Complete Works of William Shakespeare",
+    "authors": [
+      {
+        "name": "Shakespeare, William",
+        "birth_year": 1564,
+        "death_year": 1616
+      }
+    ],
+    "words": 958872,
+    "url": "https://www.gutenberg.org/ebooks/100.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/100"
+  },
+  {
+    "id": 43,
+    "title": "The strange case of Dr. Jekyll and Mr. Hyde",
+    "authors": [
+      {
+        "name": "Stevenson, Robert Louis",
+        "birth_year": 1850,
+        "death_year": 1894
+      }
+    ],
+    "words": 25685,
+    "url": "https://www.gutenberg.org/ebooks/43.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/43"
+  },
+  {
+    "id": 145,
+    "title": "Middlemarch",
+    "authors": [
+      {
+        "name": "Eliot, George",
+        "birth_year": 1819,
+        "death_year": 1880
+      }
+    ],
+    "words": 318194,
+    "url": "https://www.gutenberg.org/ebooks/145.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/145"
+  },
+  {
+    "id": 49297,
+    "title": "The Works of William Shakespeare [Cambridge Edition] [Vol. 5 of 9]",
+    "authors": [
+      {
+        "name": "Shakespeare, William",
+        "birth_year": 1564,
+        "death_year": 1616
+      }
+    ],
+    "words": 170956,
+    "url": "https://www.gutenberg.org/ebooks/49297.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/49297"
+  },
+  {
+    "id": 67979,
+    "title": "The Blue Castle: a novel",
+    "authors": [
+      {
+        "name": "Montgomery, L. M. (Lucy Maud)",
+        "birth_year": 1874,
+        "death_year": 1942
+      }
+    ],
+    "words": 69101,
+    "url": "https://www.gutenberg.org/ebooks/67979.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/67979"
+  },
+  {
+    "id": 2554,
+    "title": "Crime and Punishment",
+    "authors": [
+      {
+        "name": "Dostoyevsky, Fyodor",
+        "birth_year": 1821,
+        "death_year": 1881
+      }
+    ],
+    "words": 203890,
+    "url": "https://www.gutenberg.org/ebooks/2554.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/2554"
+  },
+  {
+    "id": 1260,
+    "title": "Jane Eyre: An Autobiography",
+    "authors": [
+      {
+        "name": "Brontë, Charlotte",
+        "birth_year": 1816,
+        "death_year": 1855
+      }
+    ],
+    "words": 186934,
+    "url": "https://www.gutenberg.org/ebooks/1260.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/1260"
+  },
+  {
+    "id": 37106,
+    "title": "Little Women; Or, Meg, Jo, Beth, and Amy",
+    "authors": [
+      {
+        "name": "Alcott, Louisa May",
+        "birth_year": 1832,
+        "death_year": 1888
+      }
+    ],
+    "words": 192026,
+    "url": "https://www.gutenberg.org/ebooks/37106.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/37106"
+  },
+  {
+    "id": 2680,
+    "title": "Meditations",
+    "authors": [
+      {
+        "name": "Marcus Aurelius, Emperor of Rome",
+        "birth_year": 121,
+        "death_year": 180
+      }
+    ],
+    "words": 71746,
+    "url": "https://www.gutenberg.org/ebooks/2680.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/2680"
+  },
+  {
+    "id": 1184,
+    "title": "The Count of Monte Cristo",
+    "authors": [
+      {
+        "name": "Dumas, Alexandre",
+        "birth_year": 1802,
+        "death_year": 1870
+      },
+      {
+        "name": "Maquet, Auguste",
+        "birth_year": 1813,
+        "death_year": 1888
+      }
+    ],
+    "words": 461258,
+    "url": "https://www.gutenberg.org/ebooks/1184.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/1184"
+  },
+  {
+    "id": 2641,
+    "title": "A Room with a View",
+    "authors": [
+      {
+        "name": "Forster, E. M. (Edward Morgan)",
+        "birth_year": 1879,
+        "death_year": 1970
+      }
+    ],
+    "words": 67152,
+    "url": "https://www.gutenberg.org/ebooks/2641.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/2641"
+  },
+  {
+    "id": 174,
+    "title": "The Picture of Dorian Gray",
+    "authors": [
+      {
+        "name": "Wilde, Oscar",
+        "birth_year": 1854,
+        "death_year": 1900
+      }
+    ],
+    "words": 79092,
+    "url": "https://www.gutenberg.org/ebooks/174.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/174"
+  },
+  {
+    "id": 98,
+    "title": "A Tale of Two Cities",
+    "authors": [
+      {
+        "name": "Dickens, Charles",
+        "birth_year": 1812,
+        "death_year": 1870
+      }
+    ],
+    "words": 136431,
+    "url": "https://www.gutenberg.org/ebooks/98.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/98"
+  },
+  {
+    "id": 64317,
+    "title": "The Great Gatsby",
+    "authors": [
+      {
+        "name": "Fitzgerald, F. Scott (Francis Scott)",
+        "birth_year": 1896,
+        "death_year": 1940
+      }
+    ],
+    "words": 48432,
+    "url": "https://www.gutenberg.org/ebooks/64317.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/64317"
+  },
+  {
+    "id": 65238,
+    "title": "The Secret of Chimneys",
+    "authors": [
+      {
+        "name": "Christie, Agatha",
+        "birth_year": 1890,
+        "death_year": 1976
+      }
+    ],
+    "words": 74841,
+    "url": "https://www.gutenberg.org/ebooks/65238.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/65238"
+  },
+  {
+    "id": 2600,
+    "title": "War and Peace",
+    "authors": [
+      {
+        "name": "Tolstoy, Leo, graf",
+        "birth_year": 1828,
+        "death_year": 1910
+      }
+    ],
+    "words": 564747,
+    "url": "https://www.gutenberg.org/ebooks/2600.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/2600"
+  },
+  {
+    "id": 1259,
+    "title": "Twenty years after",
+    "authors": [
+      {
+        "name": "Dumas, Alexandre",
+        "birth_year": 1802,
+        "death_year": 1870
+      },
+      {
+        "name": "Maquet, Auguste",
+        "birth_year": 1813,
+        "death_year": 1888
+      }
+    ],
+    "words": 242508,
+    "url": "https://www.gutenberg.org/ebooks/1259.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/1259"
+  },
+  {
+    "id": 1727,
+    "title": "The Odyssey: Rendered into English prose for the use of those who cannot read the original",
+    "authors": [
+      {
+        "name": "Homer",
+        "birth_year": -750,
+        "death_year": -650
+      }
+    ],
+    "words": 129329,
+    "url": "https://www.gutenberg.org/ebooks/1727.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/1727"
+  },
+  {
+    "id": 1232,
+    "title": "The Prince",
+    "authors": [
+      {
+        "name": "Machiavelli, Niccolò",
+        "birth_year": 1469,
+        "death_year": 1527
+      }
+    ],
+    "words": 49687,
+    "url": "https://www.gutenberg.org/ebooks/1232.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/1232"
+  },
+  {
+    "id": 394,
+    "title": "Cranford",
+    "authors": [
+      {
+        "name": "Gaskell, Elizabeth Cleghorn",
+        "birth_year": 1810,
+        "death_year": 1865
+      }
+    ],
+    "words": 71331,
+    "url": "https://www.gutenberg.org/ebooks/394.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/394"
+  },
+  {
+    "id": 2160,
+    "title": "The Expedition of Humphry Clinker",
+    "authors": [
+      {
+        "name": "Smollett, T. (Tobias)",
+        "birth_year": 1721,
+        "death_year": 1771
+      }
+    ],
+    "words": 150375,
+    "url": "https://www.gutenberg.org/ebooks/2160.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/2160"
+  },
+  {
+    "id": 16389,
+    "title": "The Enchanted April",
+    "authors": [
+      {
+        "name": "Von Arnim, Elizabeth",
+        "birth_year": 1866,
+        "death_year": 1941
+      }
+    ],
+    "words": 78575,
+    "url": "https://www.gutenberg.org/ebooks/16389.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/16389"
+  },
+  {
+    "id": 74,
+    "title": "The Adventures of Tom Sawyer, Complete",
+    "authors": [
+      {
+        "name": "Twain, Mark",
+        "birth_year": 1835,
+        "death_year": 1910
+      }
+    ],
+    "words": 71422,
+    "url": "https://www.gutenberg.org/ebooks/74.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/74"
+  },
+  {
+    "id": 3207,
+    "title": "Leviathan",
+    "authors": [
+      {
+        "name": "Hobbes, Thomas",
+        "birth_year": 1588,
+        "death_year": 1679
+      }
+    ],
+    "words": 212257,
+    "url": "https://www.gutenberg.org/ebooks/3207.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/3207"
+  },
+  {
+    "id": 23,
+    "title": "Narrative of the Life of Frederick Douglass, an American Slave",
+    "authors": [
+      {
+        "name": "Douglass, Frederick",
+        "birth_year": 1818,
+        "death_year": 1895
+      }
+    ],
+    "words": 40822,
+    "url": "https://www.gutenberg.org/ebooks/23.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/23"
+  },
+  {
+    "id": 49008,
+    "title": "The Works of William Shakespeare [Cambridge Edition] [Vol. 8 of 9]",
+    "authors": [
+      {
+        "name": "Shakespeare, William",
+        "birth_year": 1564,
+        "death_year": 1616
+      }
+    ],
+    "words": 163741,
+    "url": "https://www.gutenberg.org/ebooks/49008.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/49008"
+  },
+  {
+    "id": 59828,
+    "title": "The String of Pearls; Or, The Barber of Fleet Street. A Domestic Romance.",
+    "authors": [
+      {
+        "name": "Prest, Thomas Peckett",
+        "birth_year": 1810,
+        "death_year": 1859
+      },
+      {
+        "name": "Rymer, James Malcolm",
+        "birth_year": null,
+        "death_year": 1884
+      }
+    ],
+    "words": 439965,
+    "url": "https://www.gutenberg.org/ebooks/59828.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/59828"
+  },
+  {
+    "id": 25344,
+    "title": "The Scarlet Letter",
+    "authors": [
+      {
+        "name": "Hawthorne, Nathaniel",
+        "birth_year": 1804,
+        "death_year": 1864
+      }
+    ],
+    "words": 84549,
+    "url": "https://www.gutenberg.org/ebooks/25344.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/25344"
+  },
+  {
+    "id": 6593,
+    "title": "History of Tom Jones, a Foundling",
+    "authors": [
+      {
+        "name": "Fielding, Henry",
+        "birth_year": 1707,
+        "death_year": 1754
+      }
+    ],
+    "words": 351349,
+    "url": "https://www.gutenberg.org/ebooks/6593.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/6593"
+  },
+  {
+    "id": 6761,
+    "title": "The Adventures of Ferdinand Count Fathom — Complete",
+    "authors": [
+      {
+        "name": "Smollett, T. (Tobias)",
+        "birth_year": 1721,
+        "death_year": 1771
+      }
+    ],
+    "words": 161774,
+    "url": "https://www.gutenberg.org/ebooks/6761.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/6761"
+  },
+  {
+    "id": 55,
+    "title": "The Wonderful Wizard of Oz",
+    "authors": [
+      {
+        "name": "Baum, L. Frank (Lyman Frank)",
+        "birth_year": 1856,
+        "death_year": 1919
+      }
+    ],
+    "words": 39679,
+    "url": "https://www.gutenberg.org/ebooks/55.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/55"
+  },
+  {
+    "id": 1400,
+    "title": "Great Expectations",
+    "authors": [
+      {
+        "name": "Dickens, Charles",
+        "birth_year": 1812,
+        "death_year": 1870
+      }
+    ],
+    "words": 185235,
+    "url": "https://www.gutenberg.org/ebooks/1400.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/1400"
+  },
+  {
+    "id": 4085,
+    "title": "The Adventures of Roderick Random",
+    "authors": [
+      {
+        "name": "Smollett, T. (Tobias)",
+        "birth_year": 1721,
+        "death_year": 1771
+      }
+    ],
+    "words": 191461,
+    "url": "https://www.gutenberg.org/ebooks/4085.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/4085"
+  },
+  {
+    "id": 4300,
+    "title": "Ulysses",
+    "authors": [
+      {
+        "name": "Joyce, James",
+        "birth_year": 1882,
+        "death_year": 1941
+      }
+    ],
+    "words": 262698,
+    "url": "https://www.gutenberg.org/ebooks/4300.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/4300"
+  },
+  {
+    "id": 2591,
+    "title": "Grimms' Fairy Tales",
+    "authors": [
+      {
+        "name": "Grimm, Jacob",
+        "birth_year": 1785,
+        "death_year": 1863
+      },
+      {
+        "name": "Grimm, Wilhelm",
+        "birth_year": 1786,
+        "death_year": 1859
+      }
+    ],
+    "words": 101175,
+    "url": "https://www.gutenberg.org/ebooks/2591.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/2591"
+  },
+  {
+    "id": 5197,
+    "title": "My Life — Volume 1",
+    "authors": [
+      {
+        "name": "Wagner, Richard",
+        "birth_year": 1813,
+        "death_year": 1883
+      }
+    ],
+    "words": 219575,
+    "url": "https://www.gutenberg.org/ebooks/5197.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/5197"
+  },
+  {
+    "id": 161,
+    "title": "Sense and Sensibility",
+    "authors": [
+      {
+        "name": "Austen, Jane",
+        "birth_year": 1775,
+        "death_year": 1817
+      }
+    ],
+    "words": 119284,
+    "url": "https://www.gutenberg.org/ebooks/161.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/161"
+  },
+  {
+    "id": 16328,
+    "title": "Beowulf: An Anglo-Saxon Epic Poem",
+    "authors": [],
+    "words": 37765,
+    "url": "https://www.gutenberg.org/ebooks/16328.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/16328"
+  },
+  {
+    "id": 244,
+    "title": "A Study in Scarlet",
+    "authors": [
+      {
+        "name": "Doyle, Arthur Conan",
+        "birth_year": 1859,
+        "death_year": 1930
+      }
+    ],
+    "words": 43467,
+    "url": "https://www.gutenberg.org/ebooks/244.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/244"
+  },
+  {
+    "id": 76,
+    "title": "Adventures of Huckleberry Finn",
+    "authors": [
+      {
+        "name": "Twain, Mark",
+        "birth_year": 1835,
+        "death_year": 1910
+      }
+    ],
+    "words": 111193,
+    "url": "https://www.gutenberg.org/ebooks/76.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/76"
+  },
+  {
+    "id": 768,
+    "title": "Wuthering Heights",
+    "authors": [
+      {
+        "name": "Brontë, Emily",
+        "birth_year": 1818,
+        "death_year": 1848
+      }
+    ],
+    "words": 116211,
+    "url": "https://www.gutenberg.org/ebooks/768.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/768"
+  },
+  {
+    "id": 3296,
+    "title": "The Confessions of St. Augustine",
+    "authors": [
+      {
+        "name": "Augustine, of Hippo, Saint",
+        "birth_year": 354,
+        "death_year": 430
+      }
+    ],
+    "words": 111886,
+    "url": "https://www.gutenberg.org/ebooks/3296.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/3296"
+  },
+  {
+    "id": 78118,
+    "title": "Barry Locke, half-back",
+    "authors": [
+      {
+        "name": "Barbour, Ralph Henry",
+        "birth_year": 1870,
+        "death_year": 1944
+      }
+    ],
+    "words": 64137,
+    "url": "https://www.gutenberg.org/ebooks/78118.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/78118"
+  },
+  {
+    "id": 205,
+    "title": "Walden, and On The Duty Of Civil Disobedience",
+    "authors": [
+      {
+        "name": "Thoreau, Henry David",
+        "birth_year": 1817,
+        "death_year": 1862
+      }
+    ],
+    "words": 115722,
+    "url": "https://www.gutenberg.org/ebooks/205.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/205"
+  },
+  {
+    "id": 8492,
+    "title": "The King in Yellow",
+    "authors": [
+      {
+        "name": "Chambers, Robert W. (Robert William)",
+        "birth_year": 1865,
+        "death_year": 1933
+      }
+    ],
+    "words": 71782,
+    "url": "https://www.gutenberg.org/ebooks/8492.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/8492"
+  },
+  {
+    "id": 2542,
+    "title": "A Doll's House : a play",
+    "authors": [
+      {
+        "name": "Ibsen, Henrik",
+        "birth_year": 1828,
+        "death_year": 1906
+      }
+    ],
+    "words": 26761,
+    "url": "https://www.gutenberg.org/ebooks/2542.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/2542"
+  },
+  {
+    "id": 7370,
+    "title": "Second Treatise of Government",
+    "authors": [
+      {
+        "name": "Locke, John",
+        "birth_year": 1632,
+        "death_year": 1704
+      }
+    ],
+    "words": 56198,
+    "url": "https://www.gutenberg.org/ebooks/7370.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/7370"
+  },
+  {
+    "id": 41,
+    "title": "The Legend of Sleepy Hollow",
+    "authors": [
+      {
+        "name": "Irving, Washington",
+        "birth_year": 1783,
+        "death_year": 1859
+      }
+    ],
+    "words": 12235,
+    "url": "https://www.gutenberg.org/ebooks/41.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/41"
+  },
+  {
+    "id": 844,
+    "title": "The Importance of Being Earnest: A Trivial Comedy for Serious People",
+    "authors": [
+      {
+        "name": "Wilde, Oscar",
+        "birth_year": 1854,
+        "death_year": 1900
+      }
+    ],
+    "words": 20616,
+    "url": "https://www.gutenberg.org/ebooks/844.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/844"
+  },
+  {
+    "id": 120,
+    "title": "Treasure Island",
+    "authors": [
+      {
+        "name": "Stevenson, Robert Louis",
+        "birth_year": 1850,
+        "death_year": 1894
+      }
+    ],
+    "words": 68635,
+    "url": "https://www.gutenberg.org/ebooks/120.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/120"
+  },
+  {
+    "id": 45,
+    "title": "Anne of Green Gables",
+    "authors": [
+      {
+        "name": "Montgomery, L. M. (Lucy Maud)",
+        "birth_year": 1874,
+        "death_year": 1942
+      }
+    ],
+    "words": 102958,
+    "url": "https://www.gutenberg.org/ebooks/45.txt.utf-8",
+    "source": "https://www.gutenberg.org/ebooks/45"
+  }
+]

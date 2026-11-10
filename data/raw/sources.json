@@ -1,0 +1,13 @@
+{
+  "countries": "https://api.worldbank.org/v2/country?format=json&per_page=400",
+  "population": "https://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?date=2023&format=json&per_page=400",
+  "area": "https://api.worldbank.org/v2/country/all/indicator/AG.LND.TOTL.K2?date=2023&format=json&per_page=400",
+  "urban": "https://api.worldbank.org/v2/country/all/indicator/SP.URB.TOTL.IN.ZS?date=2023&format=json&per_page=400",
+  "internet": "https://api.worldbank.org/v2/country/all/indicator/IT.NET.USER.ZS?date=2023&format=json&per_page=400",
+  "gdp": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.MKTP.CD?date=2023&format=json&per_page=400",
+  "nobel": "https://api.nobelprize.org/2.1/laureates?limit=1500&sort=asc",
+  "elements": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/periodictable/JSON",
+  "exoplanets": "https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+top+120+pl_name%2Chostname%2Cpl_orbper%2Cpl_rade%2Csy_dist%2Cdisc_year+from+pscomppars+where+pl_orbper+%3E+0+and+pl_rade+%3E+0+and+sy_dist+%3E+0+and+pl_name+not+like+%27Kepler%25%27+and+pl_name+not+like+%27KOI%25%27+order+by+sy_dist+asc&format=json",
+  "books1": "https://gutendex.com/books/?languages=en&sort=popular&page=1",
+  "books2": "https://gutendex.com/books/?languages=en&sort=popular&page=2"
+}

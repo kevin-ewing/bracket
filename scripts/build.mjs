@@ -1,0 +1,13 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+const root=new URL('../',import.meta.url);
+const out=new URL('../dist/',import.meta.url);
+await fs.rm(out,{recursive:true,force:true});await fs.mkdir(out,{recursive:true});
+await fs.copyFile(new URL('index.html',root),new URL('index.html',out));
+await fs.cp(new URL('public/',root),out,{recursive:true});
+await fs.mkdir(new URL('src/',out),{recursive:true});
+for(const file of ['app.js','core.js','questions.js','bank.js','config.js','style.css'])await fs.copyFile(new URL('src/'+file,root),new URL('src/'+file,out));
+await fs.writeFile(new URL('.nojekyll',out),'');
+const stat=await fs.stat(new URL('src/bank.js',out));
+console.log('Built dist/ — fully static; works at a domain root or repository subpath.');
+console.log('Frozen bank:',(stat.size/1024/1024).toFixed(2),'MB before compression. No runtime dependencies.');

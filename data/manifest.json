@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "retrieved": "2026-11-10",
+  "count": 3865,
+  "categories": {
+    "Art & culture": 75,
+    "Business & economics": 453,
+    "Consulting & logic": 482,
+    "Literature": 350,
+    "People & history": 919,
+    "Science & nature": 351,
+    "Space": 54,
+    "Sports & everyday": 36,
+    "Technology": 283,
+    "World & geography": 862
+  },
+  "sha256": "ef45dc6b9c0a9e0088927c8e53bfbd1200c654039b106161e4471e992354a013",
+  "note": "Public-data-derived questions use reusable reasoning structures across different entities. Consulting cases are original synthetic models with explicit assumptions."
+}

@@ -1,0 +1,15 @@
+name = "bracket-leaderboard"
+main = "worker.js"
+compatibility_date = "2026-01-01"
+
+[vars]
+# An origin has no repository path or trailing slash.
+ALLOWED_ORIGIN = "https://YOUR-USERNAME.github.io"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "bracket-scores"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+
+[triggers]
+crons = ["17 3 * * *"]
