@@ -1,0 +1,36 @@
+name: Deploy score backend
+
+# Optional: runs only when explicitly started after Cloudflare setup.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bracket-score-backend
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: leaderboard
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Validate game and backend configuration
+        run: |
+          npm test
+          node --input-type=module -e "import fs from 'node:fs'; const s=fs.readFileSync('leaderboard/wrangler.toml','utf8'); if(s.includes('REPLACE_WITH')||s.includes('YOUR-USERNAME')) throw Error('Complete leaderboard/wrangler.toml first; see leaderboard/README.md');"
+      - name: Initialize database and deploy API
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: leaderboard
+          command: |
+            d1 execute bracket-scores --remote --file=schema.sql
+            deploy

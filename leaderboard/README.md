@@ -52,7 +52,7 @@ Reference: [Cloudflare D1 getting started](https://developers.cloudflare.com/d1/
 - A daily scheduled cleanup deletes score records older than 90 days and network hashes older than 7 days.
 - Missing configuration, database errors, network errors, timeouts, and offline play do not lose the player’s local score.
 
-First deploy creates an empty population, so expect no ranking until people opt in. Neither a remote Worker deployment nor a live D1 service was exercised here. The request handling and schema are tested against an actual in-memory SQLite database with the D1 binding interface.
+First deploy creates an empty population, so expect no ranking until people opt in.
 
 For local Worker development, temporarily use `http://127.0.0.1:4173` as `ALLOWED_ORIGIN`, put a test `RATE_SALT` in an ignored `.dev.vars`, initialize local D1 with `npx wrangler@4 d1 execute bracket-scores --local --file=schema.sql`, and run `npx wrangler@4 dev`. Set the frontend URL to the printed local Worker address. Restore production configuration before pushing.
 
@@ -61,3 +61,13 @@ For local Worker development, temporarily use `http://127.0.0.1:4173` as `ALLOWE
 Anonymous users can reset device IDs, change browsers, inspect static answers, or submit from multiple networks. No anonymous static game can prove each score is an honest, distinct person. The UI calls these *submitted scores* rather than a verified ranking of the general population. For public competitions, add server-issued attempts, authentication, bot mitigation and stronger rate controls. Never expose a GitHub token, Cloudflare API token, or database credential in the browser.
 
 Cloudflare may log network metadata independently of application storage. Review hosting-provider settings and privacy requirements for your deployment. No analytics or trackers are added by this application.
+
+## Deploy from GitHub Actions
+
+GitHub Pages hosts static files; GitHub Actions runs deployment jobs. The score API needs a running service, so this project uses a small Worker with D1 rather than writing scores into Git commits. Both frontend and backend source live in the same repository.
+
+After completing the one-time database and `RATE_SALT` setup above, commit the non-secret database ID and allowed origin in `wrangler.toml`. In GitHub repository Settings → Environments, create `leaderboard` and add environment secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`. The token needs Workers Scripts Edit and D1 Edit access for that Cloudflare account. Keep `RATE_SALT` in the Worker's secrets; the workflow does not rotate it.
+
+Open Actions → **Deploy score backend** → **Run workflow** on your main branch. The manual workflow tests the game, applies the idempotent schema, and deploys the Worker. Set the resulting public API URL in `src/config.js` and push to deploy the connected frontend. Later question-bank changes should deploy the backend and frontend together so their scoring editions match.
+
+[GitHub Pages hosting](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages) · [Cloudflare deployment from GitHub Actions](https://developers.cloudflare.com/workers/ci-cd/external-cicd/github-actions/).
