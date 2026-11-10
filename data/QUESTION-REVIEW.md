@@ -2,7 +2,7 @@
 
 5019 candidates screened: the previous 3,905 source entries, 62 derived historical exercises, 185 newly authored source-backed candidates, and 867 externally researched prompts.
 
-**217 playable questions**: 32 retained and 185 newly authored. 3935 local candidates were excluded. No external dataset wording or numeric answers were imported; its raw prompts were screened separately and only broad concepts informed independently authored questions.
+**202 playable questions**: 32 retained and 170 newly authored. 3950 local candidates were excluded. No external dataset wording or numeric answers were imported; its raw prompts were screened separately and only broad concepts informed independently authored questions.
 
 ## Inclusion test
 
@@ -24,9 +24,9 @@ The bank is deliberately smaller. Rejected entries remain documented rather than
 | --- | ---: |
 | Science & nature | 48 |
 | Space | 67 |
-| Literature | 43 |
-| Art & culture | 8 |
-| People & history | 10 |
+| Literature | 32 |
+| Art & culture | 5 |
+| People & history | 9 |
 | Sports & everyday | 14 |
 | Consulting & logic | 9 |
 | Business & economics | 5 |
@@ -40,7 +40,7 @@ The bank is deliberately smaller. Rejected entries remain documented rather than
 | element-cube | 15 |
 | nasa-light | 9 |
 | nasa-volume | 8 |
-| fermi-text | 59 |
+| fermi-text | 44 |
 | fermi-orbital | 26 |
 | fermi-geometry | 76 |
 | fermi-capacity | 13 |
@@ -56,5 +56,7 @@ The local CSV/JSON provides a disposition for every local candidate. external-qu
 ## New edition and shuffle
 
 Edition 3 has a fresh deterministic shuffle and separate saved attempts. Everyone still receives the same daily five and the same single practice five. Previous local attempts are retained under their old storage keys, not rescored. The API imports the same edition and deck.
+
+Every playable question has a reviewed explanation recipe separating estimation route, reference arithmetic, assumptions, and input-level attribution. Independent reference calculations cover all 202 playable answers in the test suite.
 
 Structural errors: 0.

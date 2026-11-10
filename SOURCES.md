@@ -1,6 +1,6 @@
 # Sources and question standards
 
-The playable bank contains 217 question instances: 32 retained and 185 newly authored. Targets use frozen source benchmarks, measured text counts, or explicitly described physical models. Each question carries its own source link and worked explanation. Optional hints disclose numerical benchmarks and halve the score.
+The playable bank contains 202 question instances: 32 retained and 170 newly authored. Targets use frozen source benchmarks, measured text counts, or explicitly described physical models. Each question carries a worked explanation that separates the estimation route, reference arithmetic, and modelling limits. Sources identify which inputs they support. Optional hints disclose numerical benchmarks and halve the score.
 
 ## Active sources
 
@@ -13,8 +13,10 @@ The playable bank contains 217 question instances: 32 retained and 185 newly aut
 - [LTA tennis court dimensions](https://www.lta.org.uk/support-centre/venue-support/facilities-and-funding/facilities-support/what-are-the-lta-recommended-court-dimensions/), [FIFA pitch dimensions](https://publications.fifa.com/de/football-stadiums-guidelines/technical-guideline/stadium-guidelines/pitch-dimensions-and-surrounding-areas/), NBA, USGA, and ITTF rules: sporting dimensions. The individual questions link to their rule documents.
 - [Emory Weeks Lab packing research](https://faculty.college.emory.edu/sites/weeks/lab/rcp/index.html): the 64% random close-packing benchmark. Container questions are bulk estimates; boundary effects and packing methods change real counts.
 - [Egyptian Ministry of Tourism and Antiquities](https://egymonuments.gov.eg/en/monuments/the-great-pyramid/) and [Harvard Giza archive / Magli (2009)](https://gizamedia.rc.fas.harvard.edu/documents/magli_nexus_11_2009.pdf): approximate original Great Pyramid geometry. [National Park Service survey](https://pubs.nps.gov/eTIC/STMA-WEFA/WASH_807_D1803_0001_of_0071.pdf): Washington Monument geometry.
+- [Sony digital audio guide](https://www.sony.com/electronics/support/articles/00165079): CD sample rate and bit depth. [ITU BT.709](https://www.itu.int/rec/R-REC-BT.709/en) and [BT.2020](https://www.itu.int/rec/R-REC-BT.2020): HD and UHD pixel dimensions.
+- [OpenStax circular motion](https://openstax.org/books/college-physics/pages/6-1-rotation-angle-and-angular-velocity): the circumference relation used in the belt puzzle.
 - [NIST SI units](https://www.nist.gov/pml/special-publication-330): physical units and conversions. Digital storage uses decimal units; image/video questions explicitly exclude compression.
-- [Project Gutenberg](https://www.gutenberg.org/) and [Gutendex](https://gutendex.com/): 59 counted English public-domain texts, including literature, plays, and historical works. These questions target a measured text count, rather than an invented page count or reading speed.
+- [Project Gutenberg](https://www.gutenberg.org/) and [Gutendex](https://gutendex.com/): 44 counted English public-domain texts, including literature, plays, and historical works. These questions target a measured text count, rather than an invented page count or reading speed.
 
 ## Text-count method and reuse
 
@@ -24,7 +26,7 @@ Question wording and explanations are original. Institutional names identify fac
 
 ## Editorial screening
 
-The review records cover all 4,152 local candidates and 867 additional public prompts. Only 217 meet the current criteria. Removed families include GDP/population lookups, fictional personal schedules, subjective museum visits, and calculations whose complete inputs appear in the prompt.
+The review records cover all 4,152 local candidates and 867 additional public prompts. Only 202 meet the current criteria. Removed families include GDP/population lookups, fictional personal schedules, subjective museum visits, and calculations whose complete inputs appear in the prompt.
 
 Additional research used [University of Maryland Fermi problems](https://physics.umd.edu/perg/fermi/fermi.htm), [Berkeley estimation guidance](https://sensesensibilityscience.berkeley.edu/topic/15), and the [AllenAI Fermi dataset](https://github.com/allenai/fermi) / [research paper](https://arxiv.org/abs/2110.14207). External prompts were screened for concepts; their wording and program-generated answers are not imported. The 867 source records are recorded by index and hash in `data/external-question-screen.json`.
 

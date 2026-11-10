@@ -44,10 +44,10 @@ npm run build   # Build the website into dist/
 
 ## Publish on GitHub Pages
 
-1. Create a GitHub repository and push this folder’s contents to its `main` branch. Include the hidden `.github` folder.
+1. Create a GitHub repository and push this folder’s contents to its `main` or `master` branch. Include the hidden `.github` folder.
 2. In the repository, select **Settings → Pages → Source → GitHub Actions**.
 3. The **Test and deploy Bracket to GitHub Pages** workflow builds and publishes the site. You can also start it from the Actions tab.
-4. Open the Pages URL shown by the deployment. Future pushes to `main` update the site.
+4. Open the Pages URL shown by the deployment. Future pushes to `main` or `master` update the site.
 
 The game works at a domain root or a repository path without changing asset URLs.
 

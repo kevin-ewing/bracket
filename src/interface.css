@@ -86,3 +86,15 @@ body{background-image:radial-gradient(var(--desk-grid) 1px,transparent 1px);back
 @media(max-width:740px){.score-grade{font-size:13px;line-height:1.6}.score-key{font-size:12px;gap:9px}}
 
 .graded-banner.missed{background:var(--earned-color);border-color:color-mix(in srgb,var(--earned-color),#243c31 15%);color:var(--earned-text)}
+
+/* Post-answer explanations separate reasoning, arithmetic and reference limits. */
+.worked-explanation h4{margin:24px 0 10px;font-size:15px;font-weight:700;color:var(--ink)}
+.worked-explanation h4:first-child{margin-top:0}
+.worked-explanation .estimation-route{font-size:16px;line-height:1.7;color:var(--ink)}
+.reference-assumptions{border-left:3px solid var(--line);padding:1px 0 1px 16px;margin:24px 0}
+.reference-assumptions h4{margin-top:0}
+.reference-assumptions p,.explanation-sources p{font-size:14px;line-height:1.65;color:var(--muted);margin:6px 0 0}
+.reasoning .explanation-sources{list-style:none;margin:0;padding:0}
+.reasoning .explanation-sources li{padding:12px 0;border-bottom:1px solid var(--line)}
+.reasoning .explanation-sources .source-link{font-size:14px;line-height:1.5}
+@media(max-width:600px){.worked-explanation h4{font-size:16px}.reference-assumptions p,.explanation-sources p,.reasoning .explanation-sources .source-link{font-size:15px}}
