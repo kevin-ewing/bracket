@@ -1,4 +1,4 @@
-export const VERSION = 1;
+export const VERSION = 2;
 export const EPOCH = '2026-11-10';
 export const DAY = 86400000;
 export const today = (now = new Date()) => now.toISOString().slice(0, 10);
@@ -35,14 +35,14 @@ export function formatNumber(n, compact = false) {
   return new Intl.NumberFormat('en-US', { maximumFractionDigits: n < 1 ? 7 : 2 }).format(n);
 }
 export function evaluate(expression) {
-  const tokens = expression.replaceAll(',', '').match(/(?:\d*\.)?\d+(?:e[+-]?\d+)?|[()+\-*/^]/gi);
-  if (!tokens || tokens.join('') !== expression.replaceAll(',', '').replace(/\s/g, '') || tokens.length > 100) throw new Error('Use numbers, parentheses, + − * / and ^.');
+  const tokens = expression.replaceAll(',', '').match(/(?:\d*\.)?\d+(?:e[+-]?\d+)?|[()+\-*/^%]/gi);
+  if (!tokens || tokens.join('') !== expression.replaceAll(',', '').replace(/\s/g, '') || tokens.length > 100) throw new Error('Use numbers, parentheses, + − * / ^ and %.');
   let index = 0;
   function atom() {
     const t = tokens[index++];
-    if (t === '(') { const n = sum(); if (tokens[index++] !== ')') throw Error('Close your parentheses.'); return n; }
+    if (t === '(') { let n = sum(); if (tokens[index++] !== ')') throw Error('Close your parentheses.'); while(tokens[index]==='%'){index++;n/=100;} return n; }
     if (t === undefined || !/^\d|^\.\d/.test(t)) throw Error('Check your expression.');
-    return Number(t);
+    let n=Number(t);while(tokens[index]==='%'){index++;n/=100;}return n;
   }
   function power() { let v = atom(); if (tokens[index] === '^') { index++; v = v ** unary(); } return v; }
   function unary() { if (tokens[index] === '+') { index++; return unary(); } if (tokens[index] === '-') { index++; return -unary(); } return power(); }

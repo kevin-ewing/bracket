@@ -32,7 +32,7 @@ export default {
   try{body=await readSmallJSON(request);calculated=validateSubmission(body);}catch(e){return reply({error:e.message},400,origin);}
   try{
    const id=await digest(env.RATE_SALT+':device:'+body.clientId);
-   let existing=await env.DB.prepare('SELECT score FROM submissions WHERE puzzle_date = ? AND device_id = ?').bind(body.date,id).first();
+   let existing=await env.DB.prepare('SELECT score FROM submissions WHERE puzzle_date = ? AND edition = ? AND device_id = ?').bind(body.date,VERSION,id).first();
    if(!existing){
     const ip=request.headers.get('CF-Connecting-IP');
     if(!ip)return reply({error:'Network identity unavailable. Try again later.'},503,origin);
@@ -40,10 +40,10 @@ export default {
     const budget=await env.DB.prepare('INSERT INTO budgets (puzzle_date, network, attempts) VALUES (?, ?, 1) ON CONFLICT(puzzle_date, network) DO UPDATE SET attempts = attempts + 1 RETURNING attempts').bind(body.date,network).first();
     if(budget.attempts>100)return reply({error:'Daily submission limit reached for this network. Your local score is safe.'},429,origin);
     // First score wins. Race-safe unique key prevents overwrites and duplicate votes.
-    await env.DB.prepare('INSERT OR IGNORE INTO submissions (puzzle_date, device_id, score) VALUES (?, ?, ?)').bind(body.date,id,calculated).run();
-    existing=await env.DB.prepare('SELECT score FROM submissions WHERE puzzle_date = ? AND device_id = ?').bind(body.date,id).first();
+    await env.DB.prepare('INSERT OR IGNORE INTO submissions (puzzle_date, edition, device_id, score) VALUES (?, ?, ?, ?)').bind(body.date,VERSION,id,calculated).run();
+    existing=await env.DB.prepare('SELECT score FROM submissions WHERE puzzle_date = ? AND edition = ? AND device_id = ?').bind(body.date,VERSION,id).first();
    }
-   const {results}=await env.DB.prepare('SELECT score, COUNT(*) AS n FROM submissions WHERE puzzle_date = ? GROUP BY score').bind(body.date).all();
+   const {results}=await env.DB.prepare('SELECT score, COUNT(*) AS n FROM submissions WHERE puzzle_date = ? AND edition = ? GROUP BY score').bind(body.date,VERSION).all();
    return reply(statistics(results,existing.score),200,origin);
   }catch{return reply({error:'The leaderboard is temporarily unavailable. Your local score is safe.'},503,origin);}
  },

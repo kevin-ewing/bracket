@@ -41,10 +41,10 @@ Reference: [Cloudflare D1 getting started](https://developers.cloudflare.com/d1/
 
 ## Behavior
 
-- Accepts only the current UTC date and v1 edition.
-- Validates all five intervals and boolean hint flags, applies the 50% hint penalty, and recalculates scores from the same frozen bank.
+- Accepts only the current UTC date and v2 edition.
+- Validates all five intervals and boolean hint flags, applies the 50% hint penalty, and recalculates scores from the same approved v2 bank.
 - Stores a one-way keyed digest of a random device ID, puzzle date, and score. It does not store submitted bounds or names.
-- A unique database key ensures one result per device and date; repeat submissions cannot overwrite it.
+- A unique database key includes edition, ensuring one result per device, edition and date; repeat submissions cannot overwrite it.
 - Returns a real ten-band score histogram, participant count, and the percentage of submitted scores strictly below yours.
 - Ties are not counted as below. Your submission is part of the pool; small samples naturally constrain the maximum percentile. The UI withholds percentiles until five participants.
 - Restricts browser access to the configured origin. This protects browser-origin behavior; it is not authentication against non-browser clients.

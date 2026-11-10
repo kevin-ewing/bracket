@@ -10,7 +10,7 @@ function database(){
  return {sql,prepare(query){let values=[];const stmt=sql.prepare(query);return {bind(...args){values=args;return this;},async first(){return stmt.get(...values)||null;},async run(){return stmt.run(...values);},async all(){return {results:stmt.all(...values)};}};},async batch(statements){return Promise.all(statements.map(s=>s.run()));}};
 }
 const origin='https://example.github.io';
-function body(){const date=today();return {date,version:1,clientId:crypto.randomUUID(),guesses:getQuestions(date).map(q=>({lower:q.answer*.9,upper:q.answer*1.1}))};}
+function body(){const date=today();return {date,version:2,clientId:crypto.randomUUID(),guesses:getQuestions(date).map(q=>({lower:q.answer*.9,upper:q.answer*1.1}))};}
 function request(payload,overrides={}){return new Request('https://leaderboard.example/submit',{method:'POST',headers:{Origin:origin,'Content-Type':'application/json','CF-Connecting-IP':'192.0.2.1',...overrides},body:JSON.stringify(payload)});}
 test('Worker persists the first score, prevents double votes, and returns real aggregates',async()=>{
  const DB=database(),env={DB,ALLOWED_ORIGIN:origin,RATE_SALT:'unit-test-only'},payload=body();
@@ -35,5 +35,5 @@ test('Worker validates origin, content type, payload size, and rate limits new d
  assert.equal((await worker.fetch(request(payload),env)).status,200);DB.sql.close();
 });
 test('Scheduled cleanup expires score records and network hashes',async()=>{
- const DB=database();DB.sql.prepare("INSERT INTO submissions VALUES ('2020-01-01', 'a', 100)").run();DB.sql.prepare("INSERT INTO budgets VALUES ('2020-01-01', 'b', 1)").run();await worker.scheduled({}, {DB});assert.equal(DB.sql.prepare('SELECT count(*) n FROM submissions').get().n,0);assert.equal(DB.sql.prepare('SELECT count(*) n FROM budgets').get().n,0);DB.sql.close();
+ const DB=database();DB.sql.prepare("INSERT INTO submissions (puzzle_date,device_id,score) VALUES ('2020-01-01', 'a', 100)").run();DB.sql.prepare("INSERT INTO budgets VALUES ('2020-01-01', 'b', 1)").run();await worker.scheduled({}, {DB});assert.equal(DB.sql.prepare('SELECT count(*) n FROM submissions').get().n,0);assert.equal(DB.sql.prepare('SELECT count(*) n FROM budgets').get().n,0);DB.sql.close();
 });

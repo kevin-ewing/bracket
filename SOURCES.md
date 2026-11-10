@@ -86,3 +86,10 @@ The 40 original mathematical templates are fixed to a single instance each in th
 `data/raw/` stores the minimal numeric records used by `scripts/generate-bank.py`. Word counts retain only derived statistics and edition identifiers. `src/bank.js` is generated and frozen; it is the actual frontend and backend target bank. The counts and hash in `data/manifest.json` refer to `data/questions.json` before adding the 40 fixed original models; final counts are in `data/release.json`.
 
 No source request runs during play or deployment. Numerical values and original calculations are the focus; copyrighted source prose, images, logos, and excerpts are not used as game content. Dataset rights are separate from the MIT license on application code. Updates should be reviewed and released as a coordinated new edition, preserving past puzzles where needed.
+
+
+## Reasoning edition v2 review
+
+All 3,905 source entries were screened with explicit editorial rules and per-entry checks for scope, expected units, supplied anchors, and a calculation path. The playable bank contains 2,179 questions: 2,117 retained original calculations and 62 derived historical weekly-count models. The 1,788 excluded originals remain in `data/question-review.csv` and `.json` with exclusion reasons. The review is not a fresh fact-check of every numeric record against its underlying primary publication.
+
+Direct fact-recall items are excluded from play. Historical derived questions supply calendar years and explicitly define 365-day years, full-week rounding and what is counted. Source facts needed as starting points are free context; extra modelling assumptions remain in optional half-score hints. Measurements without a reliable reference point are excluded, rather than labelled generically as height or length. Read `data/QUESTION-REVIEW.md` for the complete scope of the pass.

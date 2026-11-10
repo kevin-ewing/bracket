@@ -1,16 +1,18 @@
 {
-  "version": 1,
-  "count": 3905,
+  "version": 2,
+  "count": 2179,
+  "reviewed": 3905,
+  "excluded": 1788,
   "categories": {
     "Consulting & logic": 498,
-    "Technology": 283,
-    "Sports & everyday": 52,
+    "Technology": 272,
+    "Sports & everyday": 40,
     "Business & economics": 453,
-    "Art & culture": 75,
-    "Science & nature": 351,
-    "Literature": 350,
-    "Space": 62,
-    "People & history": 919,
-    "World & geography": 862
+    "Art & culture": 38,
+    "Science & nature": 170,
+    "Literature": 206,
+    "Space": 53,
+    "World & geography": 430,
+    "People & history": 19
   }
 }

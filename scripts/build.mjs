@@ -6,7 +6,7 @@ await fs.rm(out,{recursive:true,force:true});await fs.mkdir(out,{recursive:true}
 await fs.copyFile(new URL('index.html',root),new URL('index.html',out));
 await fs.cp(new URL('public/',root),out,{recursive:true});
 await fs.mkdir(new URL('src/',out),{recursive:true});
-for(const file of ['app.js','core.js','questions.js','bank.js','config.js','style.css'])await fs.copyFile(new URL('src/'+file,root),new URL('src/'+file,out));
+for(const file of ['app.js','core.js','questions.js','bank.js','config.js','style.css','interface.css','workspace.js','theme.js'])await fs.copyFile(new URL('src/'+file,root),new URL('src/'+file,out));
 await fs.writeFile(new URL('.nojekyll',out),'');
 const stat=await fs.stat(new URL('src/bank.js',out));
 console.log('Built dist/ — fully static; works at a domain root or repository subpath.');
