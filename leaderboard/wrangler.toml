@@ -4,7 +4,7 @@ compatibility_date = "2026-01-01"
 
 [vars]
 # An origin has no repository path or trailing slash.
-ALLOWED_ORIGIN = "https://YOUR-USERNAME.github.io"
+ALLOWED_ORIGIN = "https://kevin-ewing.github.io"
 
 [[d1_databases]]
 binding = "DB"

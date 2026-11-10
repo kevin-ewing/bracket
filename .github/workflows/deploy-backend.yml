@@ -21,11 +21,17 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
-      - name: Validate game and backend configuration
-        run: |
-          npm test
-          node --input-type=module -e "import fs from 'node:fs'; const s=fs.readFileSync('leaderboard/wrangler.toml','utf8'); if(s.includes('REPLACE_WITH')||s.includes('YOUR-USERNAME')) throw Error('Complete leaderboard/wrangler.toml first; see leaderboard/README.md');"
+      - name: Check optional backend setup
+        id: backend
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: node scripts/check-backend.mjs
+      - name: Test game and backend
+        if: steps.backend.outputs.ready == 'true'
+        run: npm test
       - name: Initialize database and deploy API
+        if: steps.backend.outputs.ready == 'true'
         uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
