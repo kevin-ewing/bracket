@@ -73,3 +73,16 @@ test('Score palette grades tight and broad hits distinctly with a continuous ram
  assert.notEqual(scoreStyle(650).color,scoreStyle(700).color);assert.equal(scoreStyle(1000).label,'Exceptional');
  assert.equal(scoreStyle(0,false).label,'Miss');assert.notEqual(scoreStyle(0,false).color,scoreStyle(0,true).color);
 });
+
+test('Reveal makes one gentle pass around the answer and stops without a final jump',async()=>{
+ const {revealLayout,revealPosition}=await import('../src/reveal-layout.js');
+ for(const layout of [revealLayout(80,120,100),revealLayout(120,160,100),revealLayout(40,80,100),revealLayout(1e-9,1e18,1)]){
+  const positions=Array.from({length:1001},(_,i)=>revealPosition(i/1000,layout));
+  assert.equal(positions.at(-1),layout.answer);
+  assert.ok(Math.abs(positions.at(-2)-layout.answer)<.001,'No end-frame snap');
+  assert.ok(positions.every(x=>Number.isFinite(x)&&x>=22&&x<=478),'Stay on the ruler');
+  const sides=positions.slice(0,-1).map(x=>Math.sign(x-layout.answer)).filter(Boolean);
+  assert.ok(sides.slice(1).filter((s,i)=>s!==sides[i]).length<=1,'At most one crossing of the answer');
+  assert.ok(Math.abs(positions[0]-layout.answer)>20,'Visible anticipation');
+ }
+});
