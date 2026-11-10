@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS submissions (
   puzzle_date TEXT NOT NULL,
-  edition INTEGER NOT NULL DEFAULT 2,
+  edition INTEGER NOT NULL DEFAULT 3,
   device_id TEXT NOT NULL,
   score INTEGER NOT NULL CHECK(score BETWEEN 0 AND 5000),
   PRIMARY KEY (puzzle_date, edition, device_id)

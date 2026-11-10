@@ -7,12 +7,10 @@ import { calculatorDisplay, insertAtSelection, deleteAtSelection, canUseBound, n
 
 test('Every source entry has a recorded editorial disposition; only reasoning is playable',()=>{
  const audit=JSON.parse(fs.readFileSync(new URL('../data/question-review.json',import.meta.url),'utf8'));
- assert.equal(audit.reviewed,3905);assert.equal(audit.entries.length,3905);assert.equal(new Set(audit.entries.map(q=>q.id)).size,3905);assert.equal(audit.approved,bank.length);
+ assert.equal(audit.sourceReviewed,3905);assert.equal(audit.externalScreened,867);assert.equal(audit.entries.length,audit.reviewed);assert.equal(new Set(audit.entries.map(q=>q.id)).size,audit.reviewed);assert.equal(audit.approved,bank.length);
  for(const q of audit.entries){assert.ok(q.context&&q.unit&&q.family&&q.reason,q.id);assert.ok(['approved','excluded'].includes(q.status),q.id);}
  for(const q of bank){assert.equal(q.review.kind,'estimation',q.id);assert.ok(q.context.length>20,q.id);assert.ok(q.unitLabel,q.id);assert.ok(!/^wb-pop-|^nobel-|^wd-/.test(q.id),q.id);}
- const density=bank.find(q=>q.id==='wb-density-MRT');assert.ok(density.context.includes('2023'));assert.ok(density.hint.includes('residents'));assert.ok(density.hint.includes('kilometres'));
- const history=bank.find(q=>q.id==='reasoning-wd-Q362-duration');assert.equal(history.unit,'issues');assert.ok(history.context.includes('1939'));assert.ok(history.context.includes('1945'));assert.equal(history.answer,312);
- assert.equal(VERSION,2);
+ assert.ok(!bank.some(q=>/^wb-|^case-|^model-|^reasoning-wd-/.test(q.id)));assert.equal(VERSION,3);
 });
 test('Calculator supports scientific-sized napkin math, percentages, and meaningful precision',()=>{
  assert.equal(evaluate('40e6 * 20 / (24*60*60) / 500'),18.51851851851852);
@@ -51,10 +49,27 @@ test('Scientific calculator supports estimation functions and rejects unsafe or 
 });
 test('Every playable explanation avoids programming-style rounding notation',()=>{
  for(const q of bank)for(const step of q.steps)assert.ok(!/\b(?:ceil|floor|round)\(/i.test(step),q.id+': '+step);
- const book=bank.find(q=>q.id==='gutenberg-1342-pages');assert.ok(book.steps.some(s=>s.includes('≈ 424')));
+ const book=bank.find(q=>q.id==='fermi-text-1342');assert.ok(book.steps.some(s=>s.includes('126,909')));
 });
 
-test('Prompts withhold numerical source clues and define subjective viewing sessions',()=>{
- for(const q of bank.filter(q=>q.id.startsWith('wb-square-'))){assert.ok(!q.context.includes('thousand'));assert.ok(q.hint.includes('square kilometres'));}
- for(const q of bank.filter(q=>q.id.startsWith('case-museum-'))){assert.ok(q.question.includes('30 seconds'));assert.ok(q.question.includes('five-hour'));}
+test('Editorial rules remove the rejected statistical and word-problem families',()=>{
+ assert.ok(!bank.some(q=>/^wb-|^case-|^model-|^reasoning-wd-/.test(q.id)));
+ for(const q of bank){assert.ok(q.reasoningPath,q.id);assert.ok(q.review.editorialChecks.estimableComponents,q.id);assert.ok(q.review.editorialChecks.noPrivateBehaviourRate,q.id);assert.ok(q.review.editorialChecks.noCompleteCalculationInPrompt,q.id);}
+});
+
+test('Guess reveal geometry changes with each interval and distinguishes both miss directions',async()=>{
+ const {revealLayout}=await import('../src/reveal-layout.js');
+ const hit=revealLayout(80,120,100),below=revealLayout(120,160,100),above=revealLayout(40,80,100);
+ assert.equal(hit.direction,'inside');assert.ok(hit.answer>=hit.lower&&hit.answer<=hit.upper);
+ assert.equal(below.direction,'below');assert.ok(below.answer<below.lower);
+ assert.equal(above.direction,'above');assert.ok(above.answer>above.upper);
+ assert.notEqual(revealLayout(90,110,100).upper-revealLayout(90,110,100).lower,revealLayout(1,1000,100).upper-revealLayout(1,1000,100).lower);
+ assert.equal(revealLayout(1,100,1).caught,true);assert.equal(revealLayout(1,100,100).caught,true);
+ for(const n of Object.values(revealLayout(1e-9,1e18,1)).filter(v=>typeof v==='number'))assert.ok(Number.isFinite(n));
+});
+test('Score palette grades tight and broad hits distinctly with a continuous ramp',async()=>{
+ const {scoreStyle}=await import('../src/score-style.js');
+ assert.notEqual(scoreStyle(200).color,scoreStyle(900).color);assert.notEqual(scoreStyle(800).color,scoreStyle(950).color);
+ assert.notEqual(scoreStyle(650).color,scoreStyle(700).color);assert.equal(scoreStyle(1000).label,'Exceptional');
+ assert.equal(scoreStyle(0,false).label,'Miss');assert.notEqual(scoreStyle(0,false).color,scoreStyle(0,true).color);
 });

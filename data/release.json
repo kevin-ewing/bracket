@@ -1,18 +1,18 @@
 {
-  "version": 2,
-  "count": 2179,
-  "reviewed": 3905,
-  "excluded": 1788,
+  "version": 3,
+  "count": 217,
+  "reviewed": 4152,
+  "excluded": 3935,
   "categories": {
-    "Consulting & logic": 498,
-    "Technology": 272,
-    "Sports & everyday": 40,
-    "Business & economics": 453,
-    "Art & culture": 38,
-    "Science & nature": 170,
-    "Literature": 206,
-    "Space": 53,
-    "World & geography": 430,
-    "People & history": 19
+    "Science & nature": 48,
+    "Space": 67,
+    "Literature": 43,
+    "Art & culture": 8,
+    "People & history": 10,
+    "Sports & everyday": 14,
+    "Consulting & logic": 9,
+    "Business & economics": 5,
+    "World & geography": 6,
+    "Technology": 7
   }
 }

@@ -4,13 +4,13 @@ import fs from 'node:fs';
 import { DatabaseSync } from 'node:sqlite';
 import worker from '../leaderboard/worker.js';
 import { getQuestions } from '../src/questions.js';
-import { today } from '../src/core.js';
+import { today, VERSION } from '../src/core.js';
 function database(){
  const sql=new DatabaseSync(':memory:');sql.exec(fs.readFileSync(new URL('../leaderboard/schema.sql',import.meta.url),'utf8'));
  return {sql,prepare(query){let values=[];const stmt=sql.prepare(query);return {bind(...args){values=args;return this;},async first(){return stmt.get(...values)||null;},async run(){return stmt.run(...values);},async all(){return {results:stmt.all(...values)};}};},async batch(statements){return Promise.all(statements.map(s=>s.run()));}};
 }
 const origin='https://example.github.io';
-function body(){const date=today();return {date,version:2,clientId:crypto.randomUUID(),guesses:getQuestions(date).map(q=>({lower:q.answer*.9,upper:q.answer*1.1}))};}
+function body(){const date=today();return {date,version:VERSION,clientId:crypto.randomUUID(),guesses:getQuestions(date).map(q=>({lower:q.answer*.9,upper:q.answer*1.1}))};}
 function request(payload,overrides={}){return new Request('https://leaderboard.example/submit',{method:'POST',headers:{Origin:origin,'Content-Type':'application/json','CF-Connecting-IP':'192.0.2.1',...overrides},body:JSON.stringify(payload)});}
 test('Worker persists the first score, prevents double votes, and returns real aggregates',async()=>{
  const DB=database(),env={DB,ALLOWED_ORIGIN:origin,RATE_SALT:'unit-test-only'},payload=body();

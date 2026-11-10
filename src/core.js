@@ -1,4 +1,5 @@
-export const VERSION = 2;
+import {scoreStyle} from './score-style.js';
+export const VERSION = 3;
 export const EPOCH = '2026-11-10';
 export const DAY = 86400000;
 export const today = (now = new Date()) => now.toISOString().slice(0, 10);
@@ -69,6 +70,6 @@ export function streak(dates, now = today()) {
 }
 export function shareText(date, guesses, questions) {
   const points = guesses.reduce((n, g, i) => n + scoreInterval(g.lower, g.upper, questions[i].answer, g.hinted), 0);
-  const blocks = guesses.map((g, i) => { const s = scoreInterval(g.lower, g.upper, questions[i].answer, g.hinted); return s === 0 ? '⬜' : s >= 700 ? '🟧' : '🟨'; }).join('');
+  const blocks = guesses.map((g, i) => { const s = scoreInterval(g.lower, g.upper, questions[i].answer, g.hinted); return scoreStyle(s,g.lower<=questions[i].answer&&g.upper>=questions[i].answer).emoji; }).join('');
   return `BRACKET #${String(dayNumber(date)).padStart(3, '0')}\n${blocks}\n${formatNumber(points)} / 5,000 · ${guesses.filter((g, i) => g.lower <= questions[i].answer && g.upper >= questions[i].answer).length}/5 caught\nTHE DAILY CONFIDENCE GAME`;
 }

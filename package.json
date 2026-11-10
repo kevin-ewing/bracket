@@ -1,5 +1,5 @@
 {
-  "name": "bracket-daily", "version": "2.0.0", "private": true, "type": "module",
+  "name": "bracket-daily", "version": "3.0.0", "private": true, "type": "module",
   "description": "Five daily estimation puzzles. Find the truth between your brackets.",
   "scripts": { "dev": "node scripts/serve.mjs", "start": "node scripts/serve.mjs", "build": "node scripts/build.mjs", "test": "node --test tests/*.test.mjs", "audit": "node scripts/audit-bank.mjs" },
   "engines": { "node": ">=22" }

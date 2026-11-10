@@ -1,115 +1,60 @@
-# Complete question-bank review
+# Estimation-quality review
 
-All **3905 source entries** were reviewed against explicit family-specific editorial rules and checked individually for a defined scope, expected unit, complete wording, and eligibility. This is a question-clarity and reasoning review, not a new fact-check of every underlying public dataset record.
+5019 candidates screened: the previous 3,905 source entries, 62 derived historical exercises, 185 newly authored source-backed candidates, and 867 externally researched prompts.
 
-- **1788 original entries excluded**: direct recall, ambiguous inception milestones, or inadequately defined measurements.
-- **2179 playable reasoning questions**, including 62 new historical calculations derived from supplied dates.
-- **0 unresolved structural checks.** Unknown families fail the build rather than passing by default.
+**217 playable questions**: 32 retained and 185 newly authored. 3935 local candidates were excluded. No external dataset wording or numeric answers were imported; its raw prompts were screened separately and only broad concepts informed independently authored questions.
 
-## Editorial decisions
+## Inclusion test
 
-Units appear in each lower and upper bound label. Time questions name the target unit. Free context identifies time windows, what is counted, measurement endpoints, and rounding rules. Numerical source clues and additional modelling assumptions appear in optional half-score hints. Essential definitions, such as museum visit duration and viewing pace, stay in the prompt.
+1. There is a path through quantities a player can reasonably estimate, geometry, capacity, physical scaling, or a genuinely counted text.
+2. The prompt does not provide a complete calculation. Necessary scope stays visible; numerical clues belong in the optional hint.
+3. The target does not hinge on an undisclosed personal preference, viewing pace, visit length, adoption forecast, or invented service rate.
+4. The reference is supported by cited factual benchmarks and has a worked calculation. Physical approximations are explicitly identified, not sold as exact observations.
+5. Mere arithmetic attached to a country statistic, repeated numeric substitutions, trivial identities and obscure-property recall do not qualify.
 
-Direct population/land-area lookups, Nobel birth-year recall, atomic weights, boiling temperatures, orbital-period lookups, and date anniversaries are excluded from daily/practice play. Country planning hints supply population/area/share/GDP clues. Book hints supply word counts. Geometry hints supply diameters/densities. Historical models supply dates and ask for a derived count.
+## Decisions
 
-Ambiguous source claims include construction versus opening, company founding versus streaming launch, and structure dimensions without a dependable reference point. These records remain in the audit with exclusion reasons.
+All World Bank population/GDP/internet/density/square/bus/water families are retired. So are all synthetic business cases, museum visits, personal-lifetime schedules, made-up historical diaries/newspapers, and hypothetical book page/reading/encoding counts. Selected common-material mass models and physical solar-system questions survive. New text questions target actual corpus counts; their explanations distinguish these from guessed words-per-page models.
 
-## Approved categories
+The bank is deliberately smaller. Rejected entries remain documented rather than being used to advertise thousands of puzzles. Templates still share mechanisms across distinct materials, works and planets; the question count is not a claim of that many different mechanisms.
 
-| Category | Count |
+## Subjects
+
+| Subject | Questions |
 | --- | ---: |
-| Consulting & logic | 498 |
-| Technology | 272 |
-| Sports & everyday | 40 |
-| Business & economics | 453 |
-| Art & culture | 38 |
-| Science & nature | 170 |
-| Literature | 206 |
-| Space | 53 |
-| World & geography | 430 |
-| People & history | 19 |
+| Science & nature | 48 |
+| Space | 67 |
+| Literature | 43 |
+| Art & culture | 8 |
+| People & history | 10 |
+| Sports & everyday | 14 |
+| Consulting & logic | 9 |
+| Business & economics | 5 |
+| World & geography | 6 |
+| Technology | 7 |
 
-## Approved families
+## Families
 
-| Reviewed family | Count |
+| Family | Questions |
 | --- | ---: |
-| case-airport | 8 |
-| case-battery | 8 |
-| case-bikes | 8 |
-| case-breakeven | 8 |
-| case-cafe | 8 |
-| case-checkout | 8 |
-| case-concert | 8 |
-| case-elevator | 8 |
-| case-food | 8 |
-| case-inventory | 8 |
-| case-marathon | 8 |
-| case-market | 8 |
-| case-museum | 8 |
-| case-pizza-case | 8 |
-| case-screens | 8 |
-| case-servers | 8 |
-| case-stadium | 8 |
-| case-support | 8 |
-| case-video | 8 |
-| case-vinyl | 8 |
-| element-cube | 78 |
-| element-protons | 92 |
-| gutenberg-bytes | 59 |
-| gutenberg-pages | 59 |
-| gutenberg-read | 118 |
-| historical-weekly-model | 62 |
-| model-bacteria | 1 |
-| model-binary | 1 |
-| model-books | 1 |
-| model-breaths | 1 |
-| model-bulb | 1 |
-| model-bus | 1 |
-| model-coffee | 1 |
-| model-coins | 1 |
-| model-commute | 1 |
-| model-dominoes | 1 |
-| model-earth | 1 |
-| model-grains | 1 |
-| model-hair | 1 |
-| model-handshakes | 1 |
-| model-heart | 1 |
-| model-light | 1 |
-| model-moon | 1 |
-| model-network | 1 |
-| model-orbit | 1 |
-| model-paint | 1 |
-| model-paper | 1 |
-| model-password | 1 |
-| model-penny | 1 |
-| model-pixels | 1 |
-| model-pizza | 1 |
-| model-pool | 1 |
-| model-radio | 1 |
-| model-rain | 1 |
-| model-reading | 1 |
-| model-rotation | 1 |
-| model-routes | 1 |
-| model-seconds | 1 |
-| model-shower | 1 |
-| model-sleep | 1 |
-| model-sound | 1 |
-| model-steps | 1 |
-| model-tap | 1 |
-| model-tiles | 1 |
-| model-tournament | 1 |
-| model-typing | 1 |
-| nasa-lap | 27 |
+| element-cube | 15 |
 | nasa-light | 9 |
-| nasa-volume | 9 |
-| wb-density | 215 |
-| wb-gdp | 204 |
-| wb-net | 181 |
-| wb-seat | 217 |
-| wb-square | 215 |
-| wb-urban | 217 |
-| wb-water | 217 |
+| nasa-volume | 8 |
+| fermi-text | 59 |
+| fermi-orbital | 26 |
+| fermi-geometry | 76 |
+| fermi-capacity | 13 |
+| fermi-energy | 4 |
+| fermi-digital | 7 |
 
-The full per-entry record is in [question-review.csv](question-review.csv) and question-review.json. The final playable wording, free context, hint, units, numerical target and source are in question-bank.csv and question-bank.json.
+## Sources and limits
 
-Answers and selections changed, so this is **edition v2** with separate saved attempts and backend validation. The source snapshot is retained. The old edition's notes remain readable as a migration fallback.
+Additional research: [University of Maryland](https://physics.umd.edu/perg/fermi/fermi.htm), [UC Berkeley](https://sensesensibilityscience.berkeley.edu/topic/15), [Allen AI Fermi corpus](https://github.com/allenai/fermi), NASA, USGS, NIST, national currency agencies and sport governing bodies. Dataset programs are not treated as verified answers. See SOURCES.md and the per-question citations for numeric provenance.
+
+The local CSV/JSON provides a disposition for every local candidate. external-question-screen.json records each externally screened prompt by source index and SHA-256, without redistributing the corpus. This is an editorial/structural audit, not a fresh independent measurement of every physical source value.
+
+## New edition and shuffle
+
+Edition 3 has a fresh deterministic shuffle and separate saved attempts. Everyone still receives the same daily five and the same single practice five. Previous local attempts are retained under their old storage keys, not rescored. The API imports the same edition and deck.
+
+Structural errors: 0.

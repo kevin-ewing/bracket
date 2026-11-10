@@ -59,7 +59,7 @@ Set the public API URL in `src/config.js` after deploying the backend. Keep acco
 
 ## Question guidelines
 
-Questions should have a clear unit, defined scope, and a route through estimation or calculation. State units and essential scope in the question. Put numerical source clues and extra estimation assumptions in the optional hint. Define subjective quantities such as viewing pace and visit length before scoring them. Include an explanation and public source where applicable.
+Questions need a clear unit, a defined target, and components a player can reasonably estimate. Prefer physical scale, geometry, quantities, and multi-step reasoning. Exclude obscure statistic lookups, arbitrary human behaviour, and word problems that supply every input. Essential scope belongs in the question; numerical benchmarks belong in the optional hint. Every answer needs a worked explanation and public attribution.
 
 Keep the active daily question bank and scoring stable. Introduce a new edition when changing answers or the schedule, and update the backend alongside it.
 

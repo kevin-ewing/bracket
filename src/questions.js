@@ -1,35 +1,44 @@
 import bank from './bank.js';
-import { random, dayNumber } from './core.js';
+import {random,dayNumber} from './core.js';
 export const questionCount=bank.length;
-export const categoryCounts=bank.reduce((counts,q)=>(counts[q.category]=(counts[q.category]||0)+1,counts),{});
+export const categoryCounts=bank.reduce((o,q)=>(o[q.category]=(o[q.category]||0)+1,o),{});
 export const sourceSummary=[
- {name:'World Bank · World Development Indicators',url:'https://data.worldbank.org/'},
- {name:'PubChem · National Library of Medicine',url:'https://pubchem.ncbi.nlm.nih.gov/periodic-table/'},
- {name:'Project Gutenberg · public-domain literature',url:'https://www.gutenberg.org/'},
- {name:'Wikidata · historical and cultural facts (CC0)',url:'https://www.wikidata.org/'},
  {name:'NASA · planetary fact sheets',url:'https://nssdc.gsfc.nasa.gov/planetary/factsheet/'},
- {name:'NIST · SI units and decimal prefixes',url:'https://www.nist.gov/pml/owm/metric-si-prefixes'},
- {name:'MIT OpenCourseWare · queueing models',url:'https://ocw.mit.edu/courses/15-072j-queues-theory-and-applications-spring-2006/'},
- {name:'SBA · business cost frameworks',url:'https://www.sba.gov/business-guide/plan-your-business/calculate-your-startup-costs'}
+ {name:'USGS · water science',url:'https://www.usgs.gov/water-science-school'},
+ {name:'PubChem · reference material densities',url:'https://pubchem.ncbi.nlm.nih.gov/periodic-table/'},
+ {name:'Project Gutenberg · counted public-domain texts',url:'https://www.gutenberg.org/'},
+ {name:'U.S. Mint · coin specifications',url:'https://www.usmint.gov/learn/coins-and-medals/circulating-coins/coin-specifications'},
+ {name:'U.S. Currency Education Program',url:'https://www.uscurrency.gov/about-us/currency-facts'},
+ {name:'NIST · units and physical benchmarks',url:'https://www.nist.gov/pml/special-publication-330'},
+ {name:'University of Cambridge · ISO paper sizes',url:'https://www.cl.cam.ac.uk/~mgk25/iso-paper.html'},
+ {name:'FIFA · pitch standards',url:'https://publications.fifa.com/de/football-stadiums-guidelines/technical-guideline/stadium-guidelines/pitch-dimensions-and-surrounding-areas/'},
+ {name:'National Park Service · monument measurements',url:'https://www.nps.gov/wamo/learn/historyculture/index.htm'}
 ];
-function shuffled(items,r){const result=[...items];for(let i=result.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[result[i],result[j]]=[result[j],result[i]];}return result;}
-// Two-day blocks give every category a turn, with five different subjects per day.
-// Deck order is fixed by category; each visit advances one card through that deck.
-const pairs=[['World & geography','Space'],['People & history','Art & culture'],['Science & nature','Technology'],['Literature','Sports & everyday'],['Consulting & logic','Business & economics']];
-const decks=Object.fromEntries(Object.keys(categoryCounts).map(category=>[category,shuffled(bank.filter(q=>q.category===category),random('bracket-v2-deck:'+category))]));
-// Any nonempty second argument selects the one shared practice set for that date.
-// A caller-supplied seed never creates an extra set.
+function shuffled(items,r){const out=[...items];for(let i=out.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[out[i],out[j]]=[out[j],out[i]];}return out;}
+// One frozen, whole-bank reshuffle for edition 3, shared by frontend and API.
+const seed='bracket-v3-fermi-reset-20261110';
+const categories=Object.keys(categoryCounts).sort();
+const decks=Object.fromEntries(categories.map(c=>[c,shuffled(bank.filter(q=>q.category===c),random(seed+':'+c))]));
+const cursors={daily:Object.fromEntries(categories.map(c=>[c,0])),practice:Object.fromEntries(categories.map(c=>[c,0]))};
+const schedule=[];
+function draw(day,mode,excluded=[]){
+ const r=random(seed+':'+mode+':'+day),used=new Set(excluded),picked=[];
+ // Scarce subjects stay in the rotation without being forced to repeat every few days.
+ const ordered=categories.map(c=>({category:c,priority:-Math.log(Math.max(r(),1e-12))/Math.sqrt(decks[c].length)})).sort((a,b)=>a.priority-b.priority);
+ for(const {category} of ordered){const deck=decks[category],start=cursors[mode][category];
+  for(let offset=0;offset<deck.length;offset++){
+   const index=(start+offset)%deck.length,q=deck[index];
+   if(used.has(q.entity))continue;
+   picked.push(q);used.add(q.entity);cursors[mode][category]=(index+1)%deck.length;break;
+  }
+  if(picked.length===5)break;
+ }
+ if(picked.length!==5)throw Error('Not enough distinct questions for '+mode+' '+day);
+ return shuffled(picked,r);
+}
 export function getQuestions(date,practiceSeed=''){
- const day=dayNumber(date)-1;
- if(!Number.isInteger(day)||day<0)throw Error('Puzzle date is before the first edition.');
- const practice=Boolean(practiceSeed);
- const block=Math.floor(day/2),r=random('bracket-v2-day:'+block+':'+(practice?'shared-practice:'+date:'')),used=new Set(practice?getQuestions(date).map(q=>q.entity):[]);
- // Curated launch issue: five approachable questions across five different subjects.
- if(day<2&&!practice){const ids=day===0?['model-heart','nasa-mars-light','gutenberg-1342-pages','case-servers-4','reasoning-wd-Q362-duration']:['wb-square-JPN','case-museum-2','element-6-cube','case-cafe-2','wb-gdp-USA'];return ids.map(id=>{const q=bank.find(q=>q.id===id);if(!q)throw Error('Missing launch question '+id);return q;});}
- return shuffled(pairs,r).map(pair=>{
-  const side=Math.floor(r()*2),category=pair[practice?side:(side+day%2)%2],deck=decks[category];
-  let index=practice?Math.floor(r()*deck.length):block%deck.length;
-  for(let i=0;i<deck.length&&used.has(deck[index].entity);i++)index=(index+1)%deck.length;
-  used.add(deck[index].entity);return deck[index];
- });
+ const day=dayNumber(date)-1;if(!Number.isInteger(day)||day<0||day>50000)throw Error('Puzzle date is outside the supported schedule.');
+ while(schedule.length<=day){const d=schedule.length,daily=draw(d,'daily'),practice=draw(d,'practice',daily.map(q=>q.entity));schedule.push({daily,practice});}
+ // Arbitrary supplied seeds still cannot create extra practice rounds.
+ return [...schedule[day][practiceSeed?'practice':'daily']];
 }
