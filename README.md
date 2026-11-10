@@ -59,7 +59,7 @@ Set the public API URL in `src/config.js` after deploying the backend. Keep acco
 
 ## Question guidelines
 
-Questions should have a clear unit, defined scope, and a route through estimation or calculation. Supply essential context with the question; put extra modelling assumptions in the optional hint. Include an explanation and public source where applicable.
+Questions should have a clear unit, defined scope, and a route through estimation or calculation. State units and essential scope in the question. Put numerical source clues and extra estimation assumptions in the optional hint. Define subjective quantities such as viewing pace and visit length before scoring them. Include an explanation and public source where applicable.
 
 Keep the active daily question bank and scoring stable. Introduce a new edition when changing answers or the schedule, and update the backend alongside it.
 

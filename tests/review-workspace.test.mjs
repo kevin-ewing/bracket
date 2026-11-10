@@ -10,7 +10,7 @@ test('Every source entry has a recorded editorial disposition; only reasoning is
  assert.equal(audit.reviewed,3905);assert.equal(audit.entries.length,3905);assert.equal(new Set(audit.entries.map(q=>q.id)).size,3905);assert.equal(audit.approved,bank.length);
  for(const q of audit.entries){assert.ok(q.context&&q.unit&&q.family&&q.reason,q.id);assert.ok(['approved','excluded'].includes(q.status),q.id);}
  for(const q of bank){assert.equal(q.review.kind,'estimation',q.id);assert.ok(q.context.length>20,q.id);assert.ok(q.unitLabel,q.id);assert.ok(!/^wb-pop-|^nobel-|^wd-/.test(q.id),q.id);}
- const density=bank.find(q=>q.id==='wb-density-MRT');assert.ok(density.context.includes('residents'));assert.ok(density.context.includes('kilometres'));
+ const density=bank.find(q=>q.id==='wb-density-MRT');assert.ok(density.context.includes('2023'));assert.ok(density.hint.includes('residents'));assert.ok(density.hint.includes('kilometres'));
  const history=bank.find(q=>q.id==='reasoning-wd-Q362-duration');assert.equal(history.unit,'issues');assert.ok(history.context.includes('1939'));assert.ok(history.context.includes('1945'));assert.equal(history.answer,312);
  assert.equal(VERSION,2);
 });
@@ -40,4 +40,21 @@ test('There is exactly one shared practice set per date, distinct from the main 
   assert.ok(practice.every(q=>!daily.some(d=>d.entity===q.entity)));
  }
  assert.notDeepEqual(getQuestions('2026-11-10','practice').map(q=>q.id),getQuestions('2026-11-11','practice').map(q=>q.id));
+});
+
+test('Scientific calculator supports estimation functions and rejects unsafe or unbounded expressions',()=>{
+ assert.equal(evaluate('sqrt(144)+2^3'),20);assert.equal(evaluate('√(81)'),9);
+ assert.equal(evaluate('log(1000)'),3);assert.equal(evaluate('ln(e)'),1);assert.equal(evaluate('2pi'),2*Math.PI);
+ assert.equal(evaluate('2(3+4)'),14);assert.equal(evaluate('2m/500k'),4);assert.equal(evaluate('3.'),3);
+ assert.equal(evaluate('1/(4+1)'),.2);assert.equal(evaluate('50%*80'),40);
+ for(const input of ['sqrt(-1)','log(0)','1e','2 3','2..3','process.exit()','constructor(1)','1+'.repeat(2000)])assert.throws(()=>evaluate(input),input);
+});
+test('Every playable explanation avoids programming-style rounding notation',()=>{
+ for(const q of bank)for(const step of q.steps)assert.ok(!/\b(?:ceil|floor|round)\(/i.test(step),q.id+': '+step);
+ const book=bank.find(q=>q.id==='gutenberg-1342-pages');assert.ok(book.steps.some(s=>s.includes('≈ 424')));
+});
+
+test('Prompts withhold numerical source clues and define subjective viewing sessions',()=>{
+ for(const q of bank.filter(q=>q.id.startsWith('wb-square-'))){assert.ok(!q.context.includes('thousand'));assert.ok(q.hint.includes('square kilometres'));}
+ for(const q of bank.filter(q=>q.id.startsWith('case-museum-'))){assert.ok(q.question.includes('30 seconds'));assert.ok(q.question.includes('five-hour'));}
 });

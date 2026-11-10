@@ -105,6 +105,37 @@ export function reviewQuestion(original){
    else {context=dimensions[id];if(id==='wd-Q41225-P2048')q.question='How tall is Elizabeth Tower, commonly called Big Ben?';playable=false;reason='Direct measurement recall; no reasoning input is provided.';}
   }
  }
+ // Keep the unhinted prompt concise. Source values are paid estimation clues.
+ const sourceClue=context;
+ const scopeOnly={
+  'wb-water':'Household water consumption over 24 hours, using the 2023 population.',
+  'wb-seat':'One seat per resident, using the 2023 population. Count complete buses.',
+  'wb-square':'Use 2023 land area, excluding inland water.',
+  'wb-density':'The national average in 2023. Land area excludes inland water.',
+  'wb-urban':'People living in urban areas in 2023, not households.',
+  'wb-net':'People using the internet in 2023, not the number of connected devices.',
+  'wb-gdp':'Use nominal 2023 US dollars per person, not purchasing-power parity.',
+  'element-protons':'Count protons across all 1,000 atoms, not in a single atom.',
+  'element-cube':'A solid cube of pure material, 10 centimetres on every side.',
+  'gutenberg-read':'Use the Project Gutenberg English text, including body headings and notes. Continuous reading, without breaks.',
+  'gutenberg-pages':'Hypothetical typesetting of the Project Gutenberg English text, including body headings and notes. Round up to a complete page.',
+  'gutenberg-bytes':'Plain-text storage of the Project Gutenberg English body text. Decimal kilobytes; include body headings and notes.',
+  'nasa-lap':'One complete equatorial lap, travelling continuously. Report 24-hour days.',
+  'nasa-light':'One-way sunlight travel time, using the mean distance from the Sun.',
+  'nasa-volume':'Compare spherical volumes, not masses or sphere packing.'
+ };
+ if(playable&&scopeOnly[family]){context=scopeOnly[family];q.hint=sourceClue+' '+q.hint;}
+ if(family==='case-museum'){
+  q.question=q.question.replace('How many visits would it take to see all','At 30 seconds per work, how many five-hour visits would it take to view all');
+  context='Continuous viewing, without breaks. Round up to complete visits.';
+ }
+ if(family==='case-vinyl'){
+  q.question=q.question.replace('How many days would it take to listen to','At two hours a day, how many days would it take to hear').replace('vinyl records?','40-minute vinyl records?');
+  context='Count listening days, without breaks during each two-hour session.';
+ }
+ if(family==='gutenberg-read'){
+  const rate=Number(id.split('-')[3]);q.question=q.question.replace('would a typical reader need to read',`would it take, at ${rate} words per minute, to read`).replace('would a fast reader need to read',`would it take, at ${rate} words per minute, to read`);
+ }
  if(!family||!context)throw Error('No complete editorial review for '+id+' ('+family+')');
  q.question=unitQuestion(q.question,q.unit);
  q={...q,context,unitLabel:unitLabels[q.unit]||q.unit,review:{family,status:playable?'approved':'excluded',reason:reason||'Defined scope, explicit unit, and a supplied anchor or reasoning model.',kind:playable?'estimation':'recall-or-ambiguous'}};

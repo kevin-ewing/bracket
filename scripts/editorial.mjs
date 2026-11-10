@@ -112,5 +112,5 @@ export function editQuestion(q) {
  }
  if(!hint)hint=p.replace(/\?\s*/,'? ');
  if(!question||question.includes('undefined'))throw Error('Missing editorial question: '+id);
- return {...q,question,hint};
+ return {...q,question,hint,steps:q.steps.map(step=>step.replace(/\b(?:ceil|floor|round)\(([^()]*)\)\s*=\s*/g,'$1 ≈ '))};
 }

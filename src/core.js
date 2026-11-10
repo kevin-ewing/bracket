@@ -35,21 +35,30 @@ export function formatNumber(n, compact = false) {
   return new Intl.NumberFormat('en-US', { maximumFractionDigits: n < 1 ? 7 : 2 }).format(n);
 }
 export function evaluate(expression) {
-  const tokens = expression.replaceAll(',', '').match(/(?:\d*\.)?\d+(?:e[+-]?\d+)?|[()+\-*/^%]/gi);
-  if (!tokens || tokens.join('') !== expression.replaceAll(',', '').replace(/\s/g, '') || tokens.length > 100) throw new Error('Use numbers, parentheses, + − * / ^ and %.');
-  let index = 0;
-  function atom() {
-    const t = tokens[index++];
-    if (t === '(') { let n = sum(); if (tokens[index++] !== ')') throw Error('Close your parentheses.'); while(tokens[index]==='%'){index++;n/=100;} return n; }
-    if (t === undefined || !/^\d|^\.\d/.test(t)) throw Error('Check your expression.');
-    let n=Number(t);while(tokens[index]==='%'){index++;n/=100;}return n;
+  if(/(?:\d|\.)\s+(?=\d|\.)/.test(String(expression)))throw Error('Put an operator between numbers.');
+  const source=String(expression).replaceAll(',', '').replaceAll('×','*').replaceAll('÷','/').replaceAll('−','-').replaceAll('π','pi').replaceAll('√','sqrt').replace(/\s/g,'');
+  if(source.length>2048)throw Error('Keep calculations under 2,048 characters.');
+  const tokens=source.match(/(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?(?:[kmbt](?![a-z]))?|sqrt|log|ln|abs|pi|e|[()+\-*/^%]/gi);
+  if(!tokens||tokens.join('').toLowerCase()!==source.toLowerCase()||tokens.length>200)throw Error('Use numbers, + − × ÷, powers, %, √, log or ln.');
+  let index=0;
+  const functions={sqrt:Math.sqrt,log:Math.log10,ln:Math.log,abs:Math.abs};
+  function atom(){
+    const token=tokens[index++],t=token?.toLowerCase();let n;
+    if(t==='('){n=sum();if(tokens[index++]!==')')throw Error('Close your parentheses.');}
+    else if(t in functions){if(tokens[index++]!=='(')throw Error('Use parentheses after '+t+'.');n=functions[t](sum());if(tokens[index++]!==')')throw Error('Close your parentheses.');}
+    else if(t==='pi')n=Math.PI;
+    else if(t==='e')n=Math.E;
+    else if(t&&/^(?:\d|\.\d)/.test(t)){const match=t.match(/^(.*?)([kmbt])?$/);n=Number(match[1])*({'':1,k:1e3,m:1e6,b:1e9,t:1e12}[match[2]||'']);}
+    else throw Error('Check your expression.');
+    while(tokens[index]==='%'){index++;n/=100;}
+    return n;
   }
-  function power() { let v = atom(); if (tokens[index] === '^') { index++; v = v ** unary(); } return v; }
-  function unary() { if (tokens[index] === '+') { index++; return unary(); } if (tokens[index] === '-') { index++; return -unary(); } return power(); }
-  function product() { let v = unary(); while (['*', '/'].includes(tokens[index])) { const op = tokens[index++]; const n = unary(); v = op === '*' ? v * n : v / n; } return v; }
-  function sum() { let v = product(); while (['+', '-'].includes(tokens[index])) { const op = tokens[index++]; const n = product(); v = op === '+' ? v + n : v - n; } return v; }
-  const result = sum();
-  if (index !== tokens.length || !Number.isFinite(result)) throw Error('That calculation has no finite answer.');
+  function power(){let v=atom();if(tokens[index]==='^'){index++;v=v**unary();}return v;}
+  function unary(){if(tokens[index]==='+'){index++;return unary();}if(tokens[index]==='-'){index++;return -unary();}return power();}
+  function product(){let v=unary();while(true){const t=tokens[index];if(t==='*'||t==='/'){index++;const n=unary();v=t==='*'?v*n:v/n;}else if(t==='('||t&&/^(sqrt|log|ln|abs|pi)$/i.test(t)){v*=unary();}else break;}return v;}
+  function sum(){let v=product();while(['+','-'].includes(tokens[index])){const op=tokens[index++],n=product();v=op==='+'?v+n:v-n;}return v;}
+  const result=sum();
+  if(index!==tokens.length||!Number.isFinite(result))throw Error('That calculation has no finite answer.');
   return result;
 }
 export function streak(dates, now = today()) {

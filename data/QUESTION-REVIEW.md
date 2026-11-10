@@ -8,9 +8,9 @@ All **3905 source entries** were reviewed against explicit family-specific edito
 
 ## Editorial decisions
 
-Units appear prominently above the inputs and in each bound label. Time questions name the target unit. Free context identifies time windows, what is being counted, measurement endpoints, rounding rules, and source anchors. Optional hints retain the 50% penalty for additional modelling assumptions; basic scope and supplied facts are never paid hints.
+Units appear in each lower and upper bound label. Time questions name the target unit. Free context identifies time windows, what is counted, measurement endpoints, and rounding rules. Numerical source clues and additional modelling assumptions appear in optional half-score hints. Essential definitions, such as museum visit duration and viewing pace, stay in the prompt.
 
-Direct population/land-area lookups, Nobel birth-year recall, atomic weights, boiling temperatures, orbital-period lookups, and date anniversaries are excluded from daily/practice play. Country planning problems supply population/area/share/GDP anchors for arithmetic. Book problems supply approximate word counts. Geometry questions supply diameters/densities. Historical models supply dates and ask for a derived count.
+Direct population/land-area lookups, Nobel birth-year recall, atomic weights, boiling temperatures, orbital-period lookups, and date anniversaries are excluded from daily/practice play. Country planning hints supply population/area/share/GDP clues. Book hints supply word counts. Geometry hints supply diameters/densities. Historical models supply dates and ask for a derived count.
 
 Ambiguous source claims include construction versus opening, company founding versus streaming launch, and structure dimensions without a dependable reference point. These records remain in the audit with exclusion reasons.
 
