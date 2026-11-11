@@ -89,3 +89,7 @@ Jupiter’s retained volume question now uses [NASA’s published volume ratio](
 ## Rebuild the calendar
 
 `node scripts/build-bank.mjs` uses the checked-in observations. Run `npm run audit`, `npm test`, and `npm run build` to verify it. To refresh the input snapshot, download the listed files into one directory and run `python scripts/import-year-sources.py /path/to/downloads` with PyArrow installed. The original hashes identify the inputs for the published edition. Refreshed source data can change values and should go into a new edition.
+
+## Free starting points
+
+The [review ledger](data/QUESTION-REVIEW.md) records the accessibility decision for every playable question. Dataset comparisons use a different row in the frozen series and round its value and scale relationship. For wild fisheries the [frozen world totals](data/research/wild-catch-totals.json) come from the World row of WDI indicator `ER.FSH.CAPT.MT`. The scale clue uses the corresponding national share. Burkina Faso’s groundnut feed question uses the separate domestic-supply row of the same FAOSTAT food balance. The clues leave the original scoring targets and dates in place.

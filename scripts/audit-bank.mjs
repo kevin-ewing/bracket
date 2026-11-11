@@ -7,6 +7,8 @@ if(review.sourceReviewed!==3905||review.entries.length!==review.reviewed||new Se
 if(external.screened!==867||external.entries.length!==867||external.rawQuestionsImported!==0)errors.push('External screen is incomplete.');
 for(const q of review.entries)if(!q.family||!q.reason||!q.unit||!q.context||!q.question.endsWith('?'))errors.push('Incomplete review: '+q.id);
 for(const q of bank){
+ if(!q.review.accessibility || (q.dataset&&!q.startingPoint))errors.push('Missing estimation access review: '+q.id);
+ if(q.startingPoint&&(!q.startingPoint.trim()||q.startingPoint===q.hint||q.sources.length<2))errors.push('Incomplete free starting point: '+q.id);
  if(q.review.status!=='approved'||q.review.kind!=='estimation')errors.push('Unapproved entry: '+q.id);
  if(!q.context||!q.unitLabel||!q.hint||!q.source.url||!q.reasoningPath||!Number.isFinite(q.answer)||q.answer<=0)errors.push('Missing definition or estimation path: '+q.id);
  if(/undefined|\bNaN\b/.test(q.question+q.context))errors.push('Broken wording: '+q.id);
@@ -31,7 +33,7 @@ if(errors.length)throw Error(errors.join('\n'));
 const counts=key=>Object.fromEntries(Object.entries(Object.groupBy(bank,q=>key(q))).map(([k,v])=>[k,v.length]));
 const categories=counts(q=>q.category);
 const cell=v=>'"'+String(v).replaceAll('"','""')+'"';
-const csv=[['id','status','question','expected_unit','scope','review_family','decision'],...review.entries.map(q=>[q.id,q.status,q.question,q.unit,q.context,q.family,q.reason])].map(row=>row.map(cell).join(',')).join('\r\n');
+const csv=[['id','status','question','expected_unit','scope','starting_point','accessibility','review_family','decision'],...review.entries.map(q=>[q.id,q.status,q.question,q.unit,q.context,q.startingPoint??'',q.accessibility??'',q.family,q.reason])].map(row=>row.map(cell).join(',')).join('\r\n');
 await fs.writeFile(new URL('../data/question-review.csv',import.meta.url),'\ufeff'+csv+'\r\n');
 const datasets=counts(q=>q.dataset??'Individually sourced and physical models');
 const text=`# Question review · edition 5
@@ -43,6 +45,12 @@ There are **${bank.length.toLocaleString('en-US')} unique playable questions** a
 The new bank draws from independently published agriculture, food balance, energy, development, airport and baseball tables. An editor wrote prompts, scope and estimation routes for each series. The importer checks source units, valid periods, flags and coverage. The calendar picks a single observation per series and country, uses one snapshot per crop-country topic, and separates topics and entities across both rounds on a date. Different dates can contain different observations from the same series.
 
 The edition retains the 63 questions from the previous deck, restores additional counted public-domain works and includes six newly researched space questions. The previously excluded population and GDP families, artificial service-rate problems and material substitution families remain retired.
+
+## Starting points
+
+All ${bank.length.toLocaleString('en-US')} playable questions have an accessibility decision. ${bank.filter(q=>q.startingPoint).length.toLocaleString('en-US')} show a free starting point before the guess. The remaining prompts use familiar objects and reasoning already available in the question.
+
+Country data uses rounded comparisons from the same series. Wild-catch questions give the world catch and an approximate national share. Airport distances use rounded angular differences. Authored questions use either a familiar scale or a clearly illustrative assumption. Comparison sources appear with the answer. The optional hint remains separate.
 
 ## Counts by subject
 

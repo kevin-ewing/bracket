@@ -34,7 +34,7 @@ const variants={
 };
 export function questionInUnits(q,system){
  const spec=unitSpec(q,system),variant=system==='imperial'?variants[q.id]:null;
- return {...q,...variant,unit:spec.label,unitLabel:spec.label,answer:displayValue(q.answer,q,system)};
+ return {...q,...variant,startingPoint:system==='imperial'?(q.imperialStartingPoint??q.startingPoint):q.startingPoint,unit:spec.label,unitLabel:spec.label,answer:displayValue(q.answer,q,system)};
 }
 // Keep original canonical numbers alongside display strings. Never accumulate
 // rounding drift by converting already converted strings on each toggle.

@@ -9,7 +9,7 @@ Five estimation questions a day. Set a lower and upper bound for each answer. Na
 - Enter both bounds in the unit shown beside each input. Switch between metric and imperial/US units where available; your interval converts automatically.
 - Lock your interval to reveal the answer, explanation, and source.
 - Earn up to **1,000 points per question**, or **5,000 per round**.
-- Revealing a hint halves that question’s points.
+- Starting points are free. Revealing the optional hint halves that question’s points.
 - Use the calculator and scratchpad freely.
 - Share your results after the fifth question.
 

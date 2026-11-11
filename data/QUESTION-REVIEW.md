@@ -8,6 +8,12 @@ The new bank draws from independently published agriculture, food balance, energ
 
 The edition retains the 63 questions from the previous deck, restores additional counted public-domain works and includes six newly researched space questions. The previously excluded population and GDP families, artificial service-rate problems and material substitution families remain retired.
 
+## Starting points
+
+All 3,660 playable questions have an accessibility decision. 3,655 show a free starting point before the guess. The remaining prompts use familiar objects and reasoning already available in the question.
+
+Country data uses rounded comparisons from the same series. Wild-catch questions give the world catch and an approximate national share. Airport distances use rounded angular differences. Authored questions use either a familiar scale or a clearly illustrative assumption. Comparison sources appear with the answer. The optional hint remains separate.
+
 ## Counts by subject
 
 | Subject | Questions |

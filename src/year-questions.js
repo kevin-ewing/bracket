@@ -92,3 +92,14 @@ export function yearQuestion(row, spec, countries) {
   source,sources,reasoningPath:route,steps,explanation:{approach:route,assumptions,steps,sources},
   review:{family,kind:'estimation',status:'approved',reason:route,editorialChecks:{estimableComponents:true,noPrivateBehaviourRate:true,noCompleteCalculationInPrompt:true}}};
 }
+
+// The starting point is always free. Keep its reference beside the other
+// sources revealed after the guess, and preserve the canonical answer.
+export function withStartingPoint(question, point, wording) {
+ const q = wording ? {...question,question:wording.question,prompt:wording.question,title:wording.question,context:wording.context} : question;
+ if(!point)return q;
+ const sources = point.source ? [...q.sources,{...q.source,...point.source}] : q.sources;
+ return {...q,startingPoint:point.text,imperialStartingPoint:point.imperialText,sources,
+  explanation:{...q.explanation,sources},
+  review:{...q.review,accessibility:point.reason??'Free starting point visible before guessing.'}};
+}

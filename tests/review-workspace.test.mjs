@@ -86,3 +86,21 @@ test('Reveal makes one gentle pass around the answer and stops without a final j
   assert.ok(Math.abs(positions[0]-layout.answer)>20,'Visible anticipation');
  }
 });
+
+test('The whole deck gives players a concrete route into each estimate',()=>{
+ for(const q of bank){
+  assert.ok(q.review.accessibility,q.id);
+  if(q.startingPoint){
+   assert.ok(q.startingPoint.length>35&&q.startingPoint!==q.hint,q.id);
+   assert.ok(q.sources.length>=2,q.id);
+  }else{
+   assert.ok(!q.dataset,q.id);
+   assert.match(q.review.accessibility,/familiar|geometry|stack/);
+  }
+ }
+ const italy=bank.find(q=>q.id==='year-wdi-ER.FSH.CAPT.MT-ita');
+ assert.match(italy.question,/Italy catch in 2023/);
+ assert.match(italy.startingPoint,/93 million metric tonnes.*1 tonne in every 700/);
+ assert.match(italy.imperialStartingPoint,/US short tons/);
+ assert.equal(italy.answer,128311.143);
+});
