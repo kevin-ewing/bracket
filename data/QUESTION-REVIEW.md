@@ -10,9 +10,9 @@ The edition retains the 63 questions from the previous deck, restores additional
 
 ## Starting points
 
-All 3,660 playable questions have an accessibility decision. 3,655 show a free starting point before the guess. The remaining prompts use familiar objects and reasoning already available in the question.
+All 3,660 playable questions have an accessibility decision. 3,526 show a free starting point before the guess. The remaining prompts use familiar objects and reasoning already available in the question.
 
-Country data uses rounded comparisons from the same series. Wild-catch questions give the world catch and an approximate national share. Airport distances use rounded angular differences. Authored questions use either a familiar scale or a clearly illustrative assumption. Comparison sources appear with the answer. The optional hint remains separate.
+Opening clues use independent inputs or familiar models. Population can set the scale of demand, harvested area can anchor crop output, and fleet size can anchor wild catch. Players estimate the rate, share or other unknown themselves. Airport questions give geographic context, and the explanation cites data used in the clue. The optional hint remains separate.
 
 ## Counts by subject
 

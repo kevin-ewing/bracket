@@ -93,14 +93,17 @@ test('The whole deck gives players a concrete route into each estimate',()=>{
   if(q.startingPoint){
    assert.ok(q.startingPoint.length>35&&q.startingPoint!==q.hint,q.id);
    assert.ok(q.sources.length>=2,q.id);
+   assert.doesNotMatch(q.startingPoint,/same figure for|on a similar scale|the answer was roughly|in every 700|a little over a third/i,q.id);
   }else{
-   assert.ok(!q.dataset,q.id);
+   assert.ok(!q.dataset||q.dataset==='baseball',q.id);
    assert.match(q.review.accessibility,/familiar|geometry|stack/);
   }
  }
  const italy=bank.find(q=>q.id==='year-wdi-ER.FSH.CAPT.MT-ita');
  assert.match(italy.question,/Italy catch in 2023/);
- assert.match(italy.startingPoint,/93 million metric tonnes.*1 tonne in every 700/);
- assert.match(italy.imperialStartingPoint,/US short tons/);
+ assert.match(italy.startingPoint,/10,000 Italian fishing boats.*catch per trip/);
+ const age=bank.find(q=>q.id==='year-wdi-SP.POP.65UP.TO.ZS-usa');
+ assert.match(age.startingPoint,/1960.*births for every 1,000 residents/);
+ assert.doesNotMatch(age.startingPoint,/Australia|percent/);
  assert.equal(italy.answer,128311.143);
 });

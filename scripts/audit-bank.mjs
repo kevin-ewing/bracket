@@ -7,8 +7,9 @@ if(review.sourceReviewed!==3905||review.entries.length!==review.reviewed||new Se
 if(external.screened!==867||external.entries.length!==867||external.rawQuestionsImported!==0)errors.push('External screen is incomplete.');
 for(const q of review.entries)if(!q.family||!q.reason||!q.unit||!q.context||!q.question.endsWith('?'))errors.push('Incomplete review: '+q.id);
 for(const q of bank){
- if(!q.review.accessibility || (q.dataset&&!q.startingPoint))errors.push('Missing estimation access review: '+q.id);
+ if(!q.review.accessibility)errors.push('Missing estimation access review: '+q.id);
  if(q.startingPoint&&(!q.startingPoint.trim()||q.startingPoint===q.hint||q.sources.length<2))errors.push('Incomplete free starting point: '+q.id);
+ if(/same figure for|on a similar scale|the answer was roughly|in every 700|a little over a third/i.test(q.startingPoint??''))errors.push('Answer-derived starting point: '+q.id);
  if(q.review.status!=='approved'||q.review.kind!=='estimation')errors.push('Unapproved entry: '+q.id);
  if(!q.context||!q.unitLabel||!q.hint||!q.source.url||!q.reasoningPath||!Number.isFinite(q.answer)||q.answer<=0)errors.push('Missing definition or estimation path: '+q.id);
  if(/undefined|\bNaN\b/.test(q.question+q.context))errors.push('Broken wording: '+q.id);
@@ -50,7 +51,7 @@ The edition retains the 63 questions from the previous deck, restores additional
 
 All ${bank.length.toLocaleString('en-US')} playable questions have an accessibility decision. ${bank.filter(q=>q.startingPoint).length.toLocaleString('en-US')} show a free starting point before the guess. The remaining prompts use familiar objects and reasoning already available in the question.
 
-Country data uses rounded comparisons from the same series. Wild-catch questions give the world catch and an approximate national share. Airport distances use rounded angular differences. Authored questions use either a familiar scale or a clearly illustrative assumption. Comparison sources appear with the answer. The optional hint remains separate.
+Opening clues use independent inputs or familiar models. Population can set the scale of demand, harvested area can anchor crop output, and fleet size can anchor wild catch. Players estimate the rate, share or other unknown themselves. Airport questions give geographic context, and the explanation cites data used in the clue. The optional hint remains separate.
 
 ## Counts by subject
 

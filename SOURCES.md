@@ -92,4 +92,6 @@ Jupiter’s retained volume question now uses [NASA’s published volume ratio](
 
 ## Free starting points
 
-The [review ledger](data/QUESTION-REVIEW.md) records the accessibility decision for every playable question. Dataset comparisons use a different row in the frozen series and round its value and scale relationship. For wild fisheries the [frozen world totals](data/research/wild-catch-totals.json) come from the World row of WDI indicator `ER.FSH.CAPT.MT`. The scale clue uses the corresponding national share. Burkina Faso’s groundnut feed question uses the separate domestic-supply row of the same FAOSTAT food balance. The clues leave the original scoring targets and dates in place.
+The [review ledger](data/QUESTION-REVIEW.md) records the accessibility decision for every question. Free clues use an independent input or an estimation route. They leave the rate, share or another important assumption for the player to estimate. The question dates and scoring targets are unchanged.
+
+The [frozen clue inputs](data/research/reasoning-inputs.json) contain WDI population, land area and historical birth rates, FAOSTAT harvested area, OWID electricity generation by technology, and Lahman games played. Reproduce the extract from the same frozen downloads with `python scripts/import-reasoning-inputs.py /path/to/downloads`. Italy’s boat count comes from the European Commission’s EU fishing fleet report. Burkina Faso’s groundnut feed question uses the domestic-supply row of the same FAOSTAT food balance.
