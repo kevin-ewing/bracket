@@ -116,3 +116,15 @@ body{background-image:radial-gradient(var(--desk-grid) 1px,transparent 1px);back
 .wordmark:focus-visible .brand-bracket-left{transform:translateX(-3px)}
 .wordmark:focus-visible .brand-bracket-right{transform:translateX(3px)}
 @media(prefers-reduced-motion:reduce){.brand-bracket-left,.brand-bracket-right{transition:none}}
+/* Unit choice stays next to the bounds, with comfortable mobile tap targets. */
+.bound-label{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.unit-switch{display:inline-flex;gap:3px;padding:3px;border:1px solid var(--line);border-radius:12px;background:var(--paper);margin:12px 0}
+.unit-switch button{min-height:44px;padding:8px 14px;border:0;border-radius:9px;background:transparent;color:var(--muted);font:600 14px/1.2 var(--sans);cursor:pointer}
+.unit-switch button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.unit-switch button:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.unit-explanation{padding:16px;border-left:3px solid var(--blue);background:var(--blue-soft);font-size:15px;line-height:1.6}
+.bound-label{margin-bottom:14px}
+.bound-label .unit-switch{margin:0}
+.answer-insight{font-size:16px;line-height:1.6;padding:16px 18px;border-left:3px solid var(--green);background:var(--paper);border-radius:0 10px 10px 0}
+@media(max-width:440px){.bound-label{gap:8px}.unit-switch button{min-height:46px;padding:10px 12px}}
+@media(max-width:350px){.bound-label{align-items:flex-start;flex-direction:column}}

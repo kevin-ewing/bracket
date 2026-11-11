@@ -12,7 +12,16 @@ const air=source('NASA · U.S. Standard Atmosphere','https://ntrs.nasa.gov/api/c
 export function explainQuestion(original){
  const q={...original},id=q.id;
  let approach,note,supports,extra=[];
- if(/^element-\d+-cube$/.test(id)){
+ if(id==='nasa-jupiter-volume'){
+  q.answer=143128/108.321;
+  q.context='Compare the planets’ volumes, not their masses or the packing of intact spheres.';
+  q.hint='Estimate Jupiter’s width compared with Earth and cube the ratio. Jupiter is roughly eleven times as wide; its rotation makes it noticeably flattened.';
+  approach='Volume grows with the cube of a length scale. An elevenfold diameter suggests roughly eleven cubed, or about thirteen hundred Earth volumes.';
+  q.steps=['An elevenfold size ratio gives 11 × 11 × 11 = 1,331 as a quick estimate.','NASA lists Jupiter’s volume as 143,128 and Earth’s as 108.321, both in units of 10¹⁰ km³.',`Volume ratio ≈ 143,128 ÷ 108.321 ≈ ${f(q.answer)} Earth volumes.`];
+  note='The score uses NASA’s published planetary volumes. Cubing equatorial diameters would overestimate the ratio because Jupiter is flattened at the poles. This is volume equivalence, not sphere packing.';
+  q.source=source('NASA · Jupiter fact sheet','https://nssdc.gsfc.nasa.gov/planetary/factsheet/jupiterfact.html','Published Jupiter and Earth volumes in the same units.');
+  supports='Jupiter volume 143,128 and Earth volume 108.321 in units of 10¹⁰ km³.';
+ }else if(/^element-\d+-cube$/.test(id)){
   const material=q.question.match(/cube of (.+) weigh/)[1];
   approach=`A 10 cm cube holds one litre. Compare the density of ${material} with water: a litre of water weighs about one kilogram.`;
   q.hint=`Find the cube’s volume, then multiply by density. Reference ${material} density: ${f(q.answer)} g/cm³.`;

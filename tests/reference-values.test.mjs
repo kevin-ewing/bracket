@@ -16,9 +16,62 @@ const coins={penny:[19.05,1.52,2.5,.01],quarter:[24.26,1.75,5.67,.25],dime:[17.9
 const balls={golf:42.67,pingpong:40};
 const courtAreas={tennis:23.77*10.97,basketball:94*50*.3048**2,football:105*68};
 const radius=6371,earthArea=4*Math.PI*radius**2,oceanKm3=1.338e9;
+// Independently transcribed publication values; conversions expressed separately
+// from the production snapshot's multiplier. Every added record needs a check.
+const observed={
+ 'adidas-shoes':311e6,'vietnam-adidas':311e6*38/100,'adidas-apparel':328e6,
+ 'usps-mail':112.5e9,'usps-packages':7.3e9,'china-parcels':174.5e9,'tetrapak':179e9,
+ 'ikea-balls':39923944,'vehicles':93546599,'ewaste':62e6,'coke-servings':2.2e9,
+ 'louvre':8.9e6,'flights':35.3e6,'netflix':183e9,'food-waste':631e6,'steel':1892e6,
+ 'heathrow':79.2e6,'nyc-water':1e9*231*2.54**3/1000,'national-parks':325498646,
+ 'honey':139e6*453.59237/1000,'maple':4.18e6*231*2.54**3/1000,'trees':3.04e12,
+ 'ants':20e15,'iss-day':16,'apollo-samples':382,'satellites':2781,'eiffel-rivets':2500000,
+ 'eiffel-paint':60,'railroad':1776*5280*.3048/1000,'hoover':3.25e6*27*.3048**3,
+ 'uk-books':669e6,'fish':185.4e6,'ups':5.7e9,'wimbledon-balls':54000,
+ 'wimbledon-strawberries':49942,'world-cup':3.4e6,'eggs':110e9,'wine':237e6*100,
+ 'banknotes':54.6e9,'printed-notes':[2397104000,128000000,881520000,480000000,261936000,267840000,1326976000].reduce((a,b)=>a+b,0),
+ 'pen-line':3.7,'lightning':40,
+ 'saturn-v-launch':2.8e6,'iss-pressure-volume':900,'apollo-rover-distance':35.7,'webb-mirror-area':25,
+ 'new-horizons-transit':(Date.UTC(2015,6,14)-Date.UTC(2006,0,19))/86400000,'parker-closest-pass':430000*1609.344/3600000
+};
+const yearSnapshot=JSON.parse(fs.readFileSync(new URL('../data/research/year-observations.json',import.meta.url)));
+const yearRows=new Map(yearSnapshot.observations.map(row=>['year-'+row.series+'-'+row.key.toLowerCase(),row]));
+function expectedYear(q){
+ const row=yearRows.get(q.id);
+ assert.ok(row,q.id);
+ const spec=yearSnapshot.series[row.series];
+ assert.equal(q.dataset,spec.dataset,q.id);
+ if(q.dataset==='airports'){
+  const vector=(lat,lon)=>{
+   const radians=Math.PI/180, phi=lat*radians, lambda=lon*radians;
+   return [Math.cos(phi)*Math.cos(lambda),Math.cos(phi)*Math.sin(lambda),Math.sin(phi)];
+  };
+  const a=vector(...row.coords.slice(0,2)),b=vector(...row.coords.slice(2));
+  const dot=a.reduce((sum,x,i)=>sum+x*b[i],0);
+  return 6371*Math.acos(Math.max(-1,Math.min(1,dot)));
+ }
+ if(q.dataset==='baseball'){
+  const v=row.inputs;
+  const field=row.series.slice('baseball-'.length);
+  if(field==='SO')return 100*v.SO/v.AB;
+  if(field==='attendance')return v.attendance/v.Ghome;
+  if(['R','RA','BB'].includes(field))return v[field]/v.G;
+  return v[field];
+ }
+ if(q.dataset==='qcl'&&spec.element==='005412')return row.value*1000;
+ if(q.dataset==='wdi'){
+  const code=row.series.slice(4);
+  if(['IS.AIR.GOOD.MT.K1','IS.RRS.PASG.KM','IS.RRS.GOOD.MT.K6'].includes(code))return row.value*1e6;
+  if(['ER.H2O.FWTL.K3','ER.H2O.INTR.K3'].includes(code))return row.value*1e9;
+ }
+ return row.value;
+}
 function expected(q){
  const id=q.id;
+ if(id.startsWith('year-'))return expectedYear(q);
+ if(id.startsWith('world-'))return observed[id.slice(6)];
  if(id.startsWith('element-'))return densities[id.split('-')[1]];
+ if(id==='nasa-jupiter-volume')return 143128/108.321;
  if(id.startsWith('nasa-')){const [,body,kind]=id.split('-'),[diam,,distance]=planets[body];return kind==='light'?distance*1e6/(3e5*60):(diam/12756)**3;}
  if(id.startsWith('fermi-text-'))return books[id.slice(11)];
  if(id.startsWith('fermi-sheet-'))return 21*29.7*.1*densities[id.slice(12)]/1000;
@@ -71,8 +124,8 @@ test('Every explanation teaches a route, defines its reference, and attributes i
   assert.ok(e.sources.length>0,q.id);
   for(const s of e.sources){assert.ok(s.url.startsWith('https://'),q.id);assert.ok(s.supports.length>20,q.id);assert.ok(!s.url.includes('sba.gov'),q.id);}
   const html=explanationView(q);
-  assert.ok(html.includes('How to estimate it')&&html.includes('Reference calculation'),q.id);
-  assert.ok(!/Real operations|peak[s, ]|No claim about real market demand|Original hypothetical case|all necessary assumptions are stated|\b(?:ceil|floor|round)\(/i.test(html),q.id);
+  assert.ok(html.includes('How to estimate it')&&html.includes(q.id.startsWith('world-')?'Published reference':'Reference calculation'),q.id);
+  assert.ok(!/Real operations|No claim about real market demand|Original hypothetical case|all necessary assumptions are stated|\b(?:ceil|floor|round)\(/i.test(html),q.id);
   assert.ok(!html.includes('<strong>Assumptions:</strong>'),q.id); // Do not repeat the entire hint above the arithmetic.
  }
  assert.ok(!bank.some(q=>q.question==='How many steps would it take to run a marathon?'));

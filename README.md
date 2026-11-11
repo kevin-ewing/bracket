@@ -6,7 +6,7 @@ Five estimation questions a day. Set a lower and upper bound for each answer. Na
 
 ## How to play
 
-- Enter both bounds in the unit shown with the question.
+- Enter both bounds in the unit shown beside each input. Switch between metric and imperial/US units where available; your interval converts automatically.
 - Lock your interval to reveal the answer, explanation, and source.
 - Earn up to **1,000 points per question**, or **5,000 per round**.
 - Revealing a hint halves that question’s points.
@@ -14,6 +14,8 @@ Five estimation questions a day. Set a lower and upper bound for each answer. Na
 - Share your results after the fifth question.
 
 Everyone gets the same daily questions and one shared practice round. Both refresh at **00:00 UTC**. Practice saves separately from the daily game. Your progress, notes, and statistics are saved in your browser.
+
+The current calendar contains 366 days of unique questions across both modes, starting November 10, 2026.
 
 ### Scoring
 
@@ -59,7 +61,7 @@ Set the public API URL in `src/config.js` after deploying the backend. Keep acco
 
 ## Question guidelines
 
-Questions need a clear unit, a defined target, and components a player can reasonably estimate. Prefer physical scale, geometry, quantities, and multi-step reasoning. Exclude obscure statistic lookups, arbitrary human behaviour, and word problems that supply every input. Essential scope belongs in the question; numerical benchmarks belong in the optional hint. Every answer needs a worked explanation and public attribution.
+Questions need a clear unit, a defined target, and components a player can reasonably estimate. Prefer everyday systems, production, consumption, surprising physical scale, and reasoning from familiar quantities. Avoid repeating one formula across dozens of materials or places. Exclude obscure statistic lookups, arbitrary human behaviour, and word problems that supply every input. Essential scope belongs in the question; numerical benchmarks belong in the optional hint. Every answer needs public attribution and a worked explanation. Keep illustrative estimates separate from the published figure being scored.
 
 Keep the active daily question bank and scoring stable. Introduce a new edition when changing answers or the schedule, and update the backend alongside it.
 

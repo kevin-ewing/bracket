@@ -1,62 +1,46 @@
-# Estimation-quality review
+# Question review · edition 5
 
-5019 candidates screened: the previous 3,905 source entries, 62 derived historical exercises, 185 newly authored source-backed candidates, and 867 externally researched prompts.
+There are **3,660 unique playable questions** across 366 UTC dates, from 2026-11-10 through 2027-11-10. Each date has five daily questions and five practice questions. The first 366 days use the full deck once. November 11, 2026 is Day 2.
 
-**202 playable questions**: 32 retained and 170 newly authored. 3950 local candidates were excluded. No external dataset wording or numeric answers were imported; its raw prompts were screened separately and only broad concepts informed independently authored questions.
+## Selection
 
-## Inclusion test
+The new bank draws from independently published agriculture, food balance, energy, development, airport and baseball tables. An editor wrote prompts, scope and estimation routes for each series. The importer checks source units, valid periods, flags and coverage. The calendar picks a single observation per series and country, uses one snapshot per crop-country topic, and separates topics and entities across both rounds on a date. Different dates can contain different observations from the same series.
 
-1. There is a path through quantities a player can reasonably estimate, geometry, capacity, physical scaling, or a genuinely counted text.
-2. The prompt does not provide a complete calculation. Necessary scope stays visible; numerical clues belong in the optional hint.
-3. The target does not hinge on an undisclosed personal preference, viewing pace, visit length, adoption forecast, or invented service rate.
-4. The reference is supported by cited factual benchmarks and has a worked calculation. Physical approximations are explicitly identified, not sold as exact observations.
-5. Mere arithmetic attached to a country statistic, repeated numeric substitutions, trivial identities and obscure-property recall do not qualify.
+The edition retains the 63 questions from the previous deck, restores additional counted public-domain works and includes six newly researched space questions. The previously excluded population and GDP families, artificial service-rate problems and material substitution families remain retired.
 
-## Decisions
-
-All World Bank population/GDP/internet/density/square/bus/water families are retired. So are all synthetic business cases, museum visits, personal-lifetime schedules, made-up historical diaries/newspapers, and hypothetical book page/reading/encoding counts. Selected common-material mass models and physical solar-system questions survive. New text questions target actual corpus counts; their explanations distinguish these from guessed words-per-page models.
-
-The bank is deliberately smaller. Rejected entries remain documented rather than being used to advertise thousands of puzzles. Templates still share mechanisms across distinct materials, works and planets; the question count is not a claim of that many different mechanisms.
-
-## Subjects
+## Counts by subject
 
 | Subject | Questions |
 | --- | ---: |
-| Science & nature | 48 |
-| Space | 67 |
-| Literature | 32 |
-| Art & culture | 5 |
-| People & history | 9 |
-| Sports & everyday | 14 |
-| Consulting & logic | 9 |
-| Business & economics | 5 |
-| World & geography | 6 |
-| Technology | 7 |
+| People & history | 363 |
+| World & geography | 523 |
+| Science & nature | 649 |
+| Sports & everyday | 493 |
+| Business & economics | 732 |
+| Consulting & logic | 294 |
+| Technology | 486 |
+| Space | 14 |
+| Art & culture | 76 |
+| Literature | 30 |
 
-## Families
+## Counts by source group
 
-| Family | Questions |
+| Group | Questions |
 | --- | ---: |
-| element-cube | 15 |
-| nasa-light | 9 |
-| nasa-volume | 8 |
-| fermi-text | 44 |
-| fermi-orbital | 26 |
-| fermi-geometry | 76 |
-| fermi-capacity | 13 |
-| fermi-energy | 4 |
-| fermi-digital | 7 |
+| wdi | 1180 |
+| qcl | 903 |
+| Individually sourced and physical models | 96 |
+| fbs | 564 |
+| energy | 502 |
+| airports | 97 |
+| baseball | 318 |
 
-## Sources and limits
+## Evidence
 
-Additional research: [University of Maryland](https://physics.umd.edu/perg/fermi/fermi.htm), [UC Berkeley](https://sensesensibilityscience.berkeley.edu/topic/15), [Allen AI Fermi corpus](https://github.com/allenai/fermi), NASA, USGS, NIST, national currency agencies and sport governing bodies. Dataset programs are not treated as verified answers. See SOURCES.md and the per-question citations for numeric provenance.
+Each playable question has a frozen reference and cites the relevant observation, series or original publication. The answer check recalculates values and conversions for the entire deck from the stored observations. These checks validate the game’s use of the data. The definitions, sampling uncertainty and revision policies of the publishers still apply.
 
-The local CSV/JSON provides a disposition for every local candidate. external-question-screen.json records each externally screened prompt by source index and SHA-256, without redistributing the corpus. This is an editorial/structural audit, not a fresh independent measurement of every physical source value.
+The ledger covers 7764 records, including historical candidates and the selected questions. Source screening considered 6487 eligible new data observations. The historical external screen is tracked separately. Generated questions are checked by series and observation. They are not thousands of separately hand-researched articles.
 
-## New edition and shuffle
-
-Edition 3 has a fresh deterministic shuffle and separate saved attempts. Everyone still receives the same daily five and the same single practice five. Previous local attempts are retained under their old storage keys, not rescored. The API imports the same edition and deck.
-
-Every playable question has a reviewed explanation recipe separating estimation route, reference arithmetic, assumptions, and input-level attribution. Independent reference calculations cover all 202 playable answers in the test suite.
+The calendar audit checks all IDs, normalized wording and same-day topic and entity collisions. On Day 367 the current edition starts cycling through the deck again. The date-to-question mapping is shared by the browser and the optional score service.
 
 Structural errors: 0.

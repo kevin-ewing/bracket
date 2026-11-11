@@ -10,7 +10,7 @@ test('Every source entry has a recorded editorial disposition; only reasoning is
  assert.equal(audit.sourceReviewed,3905);assert.equal(audit.externalScreened,867);assert.equal(audit.entries.length,audit.reviewed);assert.equal(new Set(audit.entries.map(q=>q.id)).size,audit.reviewed);assert.equal(audit.approved,bank.length);
  for(const q of audit.entries){assert.ok(q.context&&q.unit&&q.family&&q.reason,q.id);assert.ok(['approved','excluded'].includes(q.status),q.id);}
  for(const q of bank){assert.equal(q.review.kind,'estimation',q.id);assert.ok(q.context.length>20,q.id);assert.ok(q.unitLabel,q.id);assert.ok(!/^wb-pop-|^nobel-|^wd-/.test(q.id),q.id);}
- assert.ok(!bank.some(q=>/^wb-|^case-|^model-|^reasoning-wd-/.test(q.id)));assert.equal(VERSION,3);
+ assert.ok(!bank.some(q=>/^wb-|^case-|^model-|^reasoning-wd-/.test(q.id)));assert.equal(VERSION,5);
 });
 test('Calculator supports scientific-sized napkin math, percentages, and meaningful precision',()=>{
  assert.equal(evaluate('40e6 * 20 / (24*60*60) / 500'),18.51851851851852);

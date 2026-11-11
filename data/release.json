@@ -1,18 +1,21 @@
 {
-  "version": 3,
-  "count": 202,
-  "reviewed": 4152,
-  "excluded": 3950,
+  "version": 5,
+  "coverageDays": 366,
+  "starts": "2026-11-10",
+  "through": "2027-11-10",
+  "count": 3660,
+  "reviewed": 7764,
+  "excluded": 4104,
   "categories": {
-    "Science & nature": 48,
-    "Space": 67,
-    "Literature": 32,
-    "Art & culture": 5,
-    "People & history": 9,
-    "Sports & everyday": 14,
-    "Consulting & logic": 9,
-    "Business & economics": 5,
-    "World & geography": 6,
-    "Technology": 7
+    "People & history": 363,
+    "World & geography": 523,
+    "Science & nature": 649,
+    "Sports & everyday": 493,
+    "Business & economics": 732,
+    "Consulting & logic": 294,
+    "Technology": 486,
+    "Space": 14,
+    "Art & culture": 76,
+    "Literature": 30
   }
 }

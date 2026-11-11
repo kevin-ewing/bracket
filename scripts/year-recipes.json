@@ -1,0 +1,2663 @@
+{
+  "wdi": {
+    "IS.AIR.PSGR": {
+      "topic": "air-travel",
+      "category": "Consulting & logic",
+      "unit": "passenger boardings",
+      "prompt": "How many passenger boardings did airlines registered in {place} carry in {year}?",
+      "scope": "Domestic and international flights by airlines registered there. A connection can count twice.",
+      "route": "Estimate the fleets of the major local airlines, flights per aircraft per day and seats filled. Add smaller carriers and multiply by operating days.",
+      "factor": 1,
+      "limit": 35,
+      "min": 1000000.0,
+      "max": 1e+18
+    },
+    "IS.AIR.DPRT": {
+      "topic": "air-travel",
+      "category": "Technology",
+      "unit": "departures",
+      "prompt": "How many flights did airlines registered in {place} operate in {year}?",
+      "scope": "Count takeoffs by registered carriers, including those outside the country.",
+      "route": "Estimate the number of active aircraft and their trips per day. Short-haul planes can make several flights in the time a long-haul plane makes one.",
+      "factor": 1,
+      "limit": 35,
+      "min": 3000,
+      "max": 1e+18
+    },
+    "IS.AIR.GOOD.MT.K1": {
+      "topic": "air-cargo",
+      "category": "Consulting & logic",
+      "unit": "tonne-kilometres",
+      "prompt": "How much air freight work did airlines registered in {place} do in {year}?",
+      "scope": "Weight multiplied by distance. One tonne carried one kilometre is one tonne-kilometre.",
+      "route": "Estimate loaded cargo on dedicated freighters and in passenger-plane holds, then multiply by trips and the distance flown.",
+      "factor": 1000000.0,
+      "limit": 28,
+      "min": 5,
+      "max": 1e+18
+    },
+    "IS.RRS.PASG.KM": {
+      "topic": "rail-passengers",
+      "category": "Consulting & logic",
+      "unit": "passenger-kilometres",
+      "prompt": "How far did railway passengers travel in total in {place} in {year}?",
+      "scope": "One passenger travelling one kilometre counts as one passenger-kilometre. Use the national railway statistics.",
+      "route": "Separate repeated short commuter journeys from rarer long-distance trips. Estimate how many of each happen and multiply by typical trip length.",
+      "factor": 1000000.0,
+      "limit": 35,
+      "min": 20,
+      "max": 1e+18
+    },
+    "IS.RRS.GOOD.MT.K6": {
+      "topic": "rail-freight",
+      "category": "Consulting & logic",
+      "unit": "tonne-kilometres",
+      "prompt": "How much freight work did the railways of {place} do in {year}?",
+      "scope": "One tonne of freight moved one kilometre counts as one tonne-kilometre.",
+      "route": "Think of the major freight flows, such as grain, minerals or containers. Estimate trains per day, tonnes per train and their average haul.",
+      "factor": 1000000.0,
+      "limit": 35,
+      "min": 20,
+      "max": 1e+18
+    },
+    "IS.RRS.TOTL.KM": {
+      "topic": "rail-lines",
+      "category": "World & geography",
+      "unit": "kilometres",
+      "prompt": "How long was the railway network of {place} in {year}?",
+      "scope": "Route length. A line with two parallel tracks counts once.",
+      "route": "Sketch a map connecting the main cities, estimate their separations and add branches. Avoid counting both tracks of the same line.",
+      "factor": 1,
+      "limit": 35,
+      "min": 300,
+      "max": 1e+18
+    },
+    "IS.SHP.GOOD.TU": {
+      "topic": "containers",
+      "category": "Consulting & logic",
+      "unit": "TEU",
+      "prompt": "How much container traffic passed through ports in {place} in {year}?",
+      "scope": "Twenty-foot equivalent units (TEU). A 40-foot container counts as two TEU. Include transshipment.",
+      "route": "Estimate how many large container ships call per week and how many boxes they actually move at each port. Containers carried onward by another ship can add to the count.",
+      "factor": 1,
+      "limit": 35,
+      "min": 100000,
+      "max": 1e+18
+    },
+    "ST.INT.ARVL": {
+      "topic": "tourism-in",
+      "category": "Art & culture",
+      "unit": "arrivals",
+      "prompt": "How many international tourist arrivals did {place} record in {year}?",
+      "scope": "Use the published arrivals series. Repeat visitors can be counted again. Reporting may use border or accommodation records.",
+      "route": "Estimate the number of international visitors the main holiday areas and cities can host per day. Multiply across the year and allow for seasonality.",
+      "factor": 1,
+      "limit": 35,
+      "min": 150000,
+      "max": 1e+18
+    },
+    "ST.INT.DPRT": {
+      "topic": "tourism-out",
+      "category": "Art & culture",
+      "unit": "departures",
+      "prompt": "How many outbound international tourism departures did {place} record in {year}?",
+      "scope": "Count trips rather than unique residents.",
+      "route": "Estimate residents able to travel abroad, how often they do so and how much cross-border travel can happen by road or rail.",
+      "factor": 1,
+      "limit": 35,
+      "min": 150000,
+      "max": 1e+18
+    },
+    "IT.CEL.SETS": {
+      "topic": "mobile",
+      "category": "Technology",
+      "unit": "subscriptions",
+      "prompt": "How many mobile phone subscriptions were active in {place} in {year}?",
+      "scope": "Subscriptions, including active prepaid accounts. A person can have more than one.",
+      "route": "Estimate adult residents with phones, then add work phones and second SIM cards. Children and shared phones pull the estimate in the other direction.",
+      "factor": 1,
+      "limit": 35,
+      "min": 1000000.0,
+      "max": 1e+18
+    },
+    "IT.NET.BBND": {
+      "topic": "broadband",
+      "category": "Technology",
+      "unit": "subscriptions",
+      "prompt": "How many fixed broadband subscriptions did {place} have in {year}?",
+      "scope": "Fixed connections such as fibre and cable. Exclude mobile data subscriptions.",
+      "route": "Estimate households, decide what fraction have a fixed connection and add businesses. One household can share a connection among several people.",
+      "factor": 1,
+      "limit": 35,
+      "min": 100000.0,
+      "max": 1e+18
+    },
+    "IT.MLT.MAIN": {
+      "topic": "landlines",
+      "category": "Technology",
+      "unit": "subscriptions",
+      "prompt": "How many fixed telephone subscriptions remained in {place} in {year}?",
+      "scope": "Use the fixed telephone series. Include fixed voice subscriptions that use internet technology where reported.",
+      "route": "Think about households that kept a fixed number after getting mobile phones, plus shops and offices that still need a public contact number.",
+      "factor": 1,
+      "limit": 35,
+      "min": 100000.0,
+      "max": 1e+18
+    },
+    "EG.USE.ELEC.KH.PC": {
+      "topic": "electricity-use",
+      "category": "Technology",
+      "unit": "kilowatt-hours per person",
+      "prompt": "How much electricity was used per resident in {place} in {year}?",
+      "scope": "Annual per-person allocation of economy-wide electricity use. Include industry and services.",
+      "route": "Start from what a household uses for lighting, cooling and appliances. Divide by people in the household, then allow for workplaces and industry.",
+      "factor": 1,
+      "limit": 35,
+      "min": 150,
+      "max": 1e+18
+    },
+    "ER.FSH.AQUA.MT": {
+      "topic": "aquaculture",
+      "category": "Business & economics",
+      "unit": "metric tonnes",
+      "prompt": "How much did aquaculture produce in {place} in {year}?",
+      "scope": "Use the FAO aquaculture production series, which can include aquatic plants. Exclude wild capture.",
+      "route": "Think of farmed species, numbers of ponds or cages and harvests per year. Compare farm output with domestic seafood demand and exports.",
+      "factor": 1,
+      "limit": 35,
+      "min": 1000,
+      "max": 1e+18
+    },
+    "ER.FSH.CAPT.MT": {
+      "topic": "wild-fishing",
+      "category": "Business & economics",
+      "unit": "metric tonnes",
+      "prompt": "How much did capture fisheries produce in {place} in {year}?",
+      "scope": "Use the FAO capture production series. Exclude aquaculture.",
+      "route": "Estimate the working fishing fleet, fishing days and catch per boat per trip. Allow for the difference between small coastal boats and industrial vessels.",
+      "factor": 1,
+      "limit": 35,
+      "min": 1000,
+      "max": 1e+18
+    },
+    "ER.H2O.FWTL.K3": {
+      "topic": "water-withdrawal",
+      "category": "Science & nature",
+      "unit": "cubic metres",
+      "prompt": "How much freshwater did {place} withdraw in {year}?",
+      "scope": "Annual freshwater withdrawals for agriculture, industry and households. Count water withdrawn, including water returned later.",
+      "route": "Household taps are only one part. Estimate irrigated land and the depth of water applied over a year, then add industrial and household withdrawals.",
+      "factor": 1000000000.0,
+      "limit": 35,
+      "min": 0.02,
+      "max": 1e+18
+    },
+    "ER.H2O.INTR.K3": {
+      "topic": "water-renewal",
+      "category": "World & geography",
+      "unit": "cubic metres",
+      "prompt": "How much renewable freshwater is generated internally in {place} in a typical year?",
+      "scope": "Use the long-term average reported in the {year} data. Include runoff and groundwater recharge from precipitation within the country, accounting for overlap.",
+      "route": "Estimate land area and average rain depth, then the fraction left after evaporation and plant use. Do not count river water flowing in from another country.",
+      "factor": 1000000000.0,
+      "limit": 30,
+      "min": 0.1,
+      "max": 1e+18
+    },
+    "AG.LND.FRST.K2": {
+      "topic": "forest-area",
+      "category": "Science & nature",
+      "unit": "square kilometres",
+      "prompt": "How much of {place} was classified as forest in {year}?",
+      "scope": "Use the FAO forest-area definition. The land use matters, so tree-covered orchards do not automatically count.",
+      "route": "Picture the map in regions. Estimate the size and forest cover of the mountainous, agricultural and urban parts separately.",
+      "factor": 1,
+      "limit": 35,
+      "min": 1000,
+      "max": 1e+18
+    },
+    "AG.LND.CREL.HA": {
+      "topic": "grain-land",
+      "category": "Business & economics",
+      "unit": "hectares",
+      "prompt": "How much land did {place} harvest for cereal grain in {year}?",
+      "scope": "Harvested area under cereals. Count grain crops, excluding cereals harvested green for forage.",
+      "route": "Estimate cereal consumption and export needs, then divide by grain harvested per hectare. A double-cropped field can contribute multiple harvests.",
+      "factor": 1,
+      "limit": 35,
+      "min": 50000,
+      "max": 1e+18
+    },
+    "AG.CON.FERT.ZS": {
+      "topic": "fertiliser",
+      "category": "Science & nature",
+      "unit": "kilograms per hectare",
+      "prompt": "How much fertiliser was used per hectare of arable land in {place} in {year}?",
+      "scope": "Plant nutrient content in the World Bank measure. Exclude traditional animal and plant manures.",
+      "route": "Think of a crop’s nutrient needs and how much is already in the soil. Compare high-yield irrigated crops with fields that receive little manufactured fertiliser.",
+      "factor": 1,
+      "limit": 35,
+      "min": 5,
+      "max": 1e+18
+    },
+    "SH.MED.BEDS.ZS": {
+      "topic": "hospital-capacity",
+      "category": "Consulting & logic",
+      "unit": "beds per 1,000 people",
+      "prompt": "How many hospital beds were available for every 1,000 residents in {place} in {year}?",
+      "scope": "Use the World Bank’s hospital-bed series. Definitions and coverage differ among health systems.",
+      "route": "Estimate how often people need an overnight stay and how many nights each admission takes. Convert total bed-days to staffed beds and allow for spare capacity.",
+      "factor": 1,
+      "limit": 35,
+      "min": 0.3,
+      "max": 1e+18
+    },
+    "SH.MED.PHYS.ZS": {
+      "topic": "doctor-capacity",
+      "category": "Consulting & logic",
+      "unit": "physicians per 1,000 people",
+      "prompt": "How many physicians were recorded for every 1,000 residents in {place} in {year}?",
+      "scope": "The source covers generalist and specialist medical practitioners. It does not count all health workers.",
+      "route": "Think about patient panels for primary care and the additional doctors needed in hospitals. Scale that to a town of a thousand residents.",
+      "factor": 1,
+      "limit": 35,
+      "min": 0.2,
+      "max": 1e+18
+    },
+    "SE.PRM.ENRL": {
+      "topic": "primary-pupils",
+      "category": "People & history",
+      "unit": "pupils",
+      "prompt": "How many pupils were enrolled in primary education in {place} in {year}?",
+      "scope": "Count enrolled pupils of any age in primary education.",
+      "route": "Estimate a typical birth cohort from the population and birth rate, then multiply by primary grades and adjust for enrolment and repeated grades.",
+      "factor": 1,
+      "limit": 35,
+      "min": 50000,
+      "max": 1e+18
+    },
+    "SE.PRM.TCHR": {
+      "topic": "primary-teachers",
+      "category": "People & history",
+      "unit": "teachers",
+      "prompt": "How many teachers worked at primary level in {place} in {year}?",
+      "scope": "Use the published primary teacher count.",
+      "route": "Estimate the number of primary-age pupils, then how many pupils each teacher can teach. Allow for small schools, specialists and teachers who share a class.",
+      "factor": 1,
+      "limit": 35,
+      "min": 5000,
+      "max": 1e+18
+    },
+    "SE.SEC.ENRL.VO": {
+      "topic": "vocational-pupils",
+      "category": "People & history",
+      "unit": "pupils",
+      "prompt": "How many secondary pupils were enrolled in vocational programmes in {place} in {year}?",
+      "scope": "Secondary-level vocational programmes only, as classified by the source.",
+      "route": "Estimate secondary-age cohorts, enrolment and the share choosing technical or vocational tracks. Systems differ in when pupils can specialise.",
+      "factor": 1,
+      "limit": 35,
+      "min": 10000,
+      "max": 1e+18
+    },
+    "SP.DYN.CBRT.IN": {
+      "topic": "births",
+      "category": "People & history",
+      "unit": "births per 1,000 people",
+      "prompt": "How many babies were born per 1,000 residents in {place} in {year}?",
+      "scope": "Live births divided by midyear population, expressed per 1,000 residents.",
+      "route": "Picture a town of a thousand. Estimate the fraction in childbearing ages and how many in that group would have a baby in a year.",
+      "factor": 1,
+      "limit": 35,
+      "min": 3,
+      "max": 1e+18
+    },
+    "SP.DYN.CDRT.IN": {
+      "topic": "deaths",
+      "category": "People & history",
+      "unit": "deaths per 1,000 people",
+      "prompt": "How many people died per 1,000 residents in {place} in {year}?",
+      "scope": "All deaths divided by midyear population, expressed per 1,000 residents.",
+      "route": "Start with the lifespan of a hypothetical stable population. Then think about whether this country has more children or older residents than that simple model.",
+      "factor": 1,
+      "limit": 35,
+      "min": 2,
+      "max": 1e+18
+    },
+    "SP.DYN.TFRT.IN": {
+      "topic": "fertility",
+      "category": "People & history",
+      "unit": "births per woman",
+      "prompt": "What family size do the {year} birth rates of {place} imply?",
+      "scope": "Total fertility rate. It applies that year’s age-specific rates across a hypothetical woman’s reproductive life.",
+      "route": "Compare common family sizes and the share of people who never have children. Think about how birth timing can shift the rate in a given year.",
+      "factor": 1,
+      "limit": 35,
+      "min": 0.5,
+      "max": 1e+18
+    },
+    "SE.TER.ENRR": {
+      "topic": "higher-education",
+      "category": "People & history",
+      "unit": "percent",
+      "prompt": "What was the gross tertiary enrolment ratio in {place} in {year}?",
+      "scope": "Enrolled tertiary students of any age divided by the population of the official tertiary-age group. It can exceed 100%.",
+      "route": "Estimate how many school leavers enter tertiary study and how long they stay. Include returning adult students and international students.",
+      "factor": 1,
+      "limit": 35,
+      "min": 5,
+      "max": 130
+    },
+    "SH.IMM.IDPT": {
+      "topic": "vaccination",
+      "category": "Science & nature",
+      "unit": "percent",
+      "prompt": "What share of children aged 12–23 months had received three DPT vaccine doses in {place} in {year}?",
+      "scope": "Use the WHO and UNICEF estimate reported by the World Bank. DPT covers diphtheria, pertussis and tetanus.",
+      "route": "Think about how often families can reach routine child health services and how much follow-up is needed to complete several doses.",
+      "factor": 1,
+      "limit": 22,
+      "min": 40,
+      "max": 99
+    },
+    "EG.ELC.ACCS.RU.ZS": {
+      "topic": "rural-power",
+      "category": "Technology",
+      "unit": "percent",
+      "prompt": "What share of rural residents had access to electricity in {place} in {year}?",
+      "scope": "Use the published rural access estimate. Access can include off-grid sources and does not establish that power is reliable.",
+      "route": "Think about where villages sit relative to the grid, how difficult the terrain is and whether local solar or mini-grids cover more remote households.",
+      "factor": 1,
+      "limit": 28,
+      "min": 12,
+      "max": 99
+    },
+    "SH.H2O.BASW.RU.ZS": {
+      "topic": "rural-water",
+      "category": "World & geography",
+      "unit": "percent",
+      "prompt": "What share of rural residents in {place} used at least basic drinking-water services in {year}?",
+      "scope": "An improved source reachable within a round trip of 30 minutes, including queuing.",
+      "route": "Consider how many people are reached by pipes, protected wells or community taps. Add the constraint that the water source needs to be close enough.",
+      "factor": 1,
+      "limit": 35,
+      "min": 20,
+      "max": 99
+    },
+    "SH.STA.SMSS.ZS": {
+      "topic": "sanitation",
+      "category": "World & geography",
+      "unit": "percent",
+      "prompt": "What share of residents in {place} used safely managed sanitation in {year}?",
+      "scope": "An improved, unshared facility with excreta safely disposed of in place or treated elsewhere.",
+      "route": "Think about sewer connections and treatment, plus septic systems that are safely managed. Having a toilet alone does not tell you where waste goes.",
+      "factor": 1,
+      "limit": 35,
+      "min": 8,
+      "max": 99
+    },
+    "SL.AGR.EMPL.ZS": {
+      "topic": "farm-jobs",
+      "category": "Business & economics",
+      "unit": "percent",
+      "prompt": "What share of employed people in {place} worked in agriculture in {year}?",
+      "scope": "ILO modelled estimate for agriculture, hunting, forestry and fishing. Use share of employment.",
+      "route": "Estimate how urban the workforce is and how much farming is mechanised. A large agricultural output need not mean a large farm workforce.",
+      "factor": 1,
+      "limit": 35,
+      "min": 2,
+      "max": 85
+    },
+    "SL.IND.EMPL.ZS": {
+      "topic": "industrial-jobs",
+      "category": "Business & economics",
+      "unit": "percent",
+      "prompt": "What share of employed people in {place} worked in industry in {year}?",
+      "scope": "ILO modelled estimate. Includes manufacturing, mining, utilities and construction.",
+      "route": "Think of factories and building sites together. Compare their likely workforce with those of farms, retail, transport and public services.",
+      "factor": 1,
+      "limit": 35,
+      "min": 5,
+      "max": 55
+    },
+    "BX.TRF.PWKR.DT.GD.ZS": {
+      "topic": "remittances",
+      "category": "Business & economics",
+      "unit": "percent of GDP",
+      "prompt": "How large were personal remittances received by {place} in {year}, relative to its economy?",
+      "scope": "Use the World Bank’s personal remittances received as a share of GDP.",
+      "route": "Estimate workers living abroad and money sent home per worker, then compare that flow with what the home economy produces in a year.",
+      "factor": 1,
+      "limit": 26,
+      "min": 0.8,
+      "max": 55
+    },
+    "SP.POP.65UP.TO.ZS": {
+      "topic": "older-population",
+      "category": "People & history",
+      "unit": "percent",
+      "prompt": "What share of residents in {place} were age 65 or older in {year}?",
+      "scope": "Use the midyear age distribution.",
+      "route": "Think about past family sizes and survival into old age. A long-lived population can still have a small older share when birth cohorts are growing quickly.",
+      "factor": 1,
+      "limit": 35,
+      "min": 3,
+      "max": 33
+    },
+    "SH.DYN.MORT": {
+      "topic": "child-survival",
+      "category": "Science & nature",
+      "unit": "deaths per 1,000 live births",
+      "prompt": "At {year} mortality rates, how many children in {place} would die before age five per 1,000 live births?",
+      "scope": "Use the UN Inter-agency Group estimate published by the World Bank. This is a probability expressed per 1,000 births.",
+      "route": "Consider infant survival, clean water, nutrition and routine health care. Think about risks across five years instead of only at birth.",
+      "factor": 1,
+      "limit": 35,
+      "min": 2,
+      "max": 1e+18
+    },
+    "EN.POP.SLUM.UR.ZS": {
+      "topic": "urban-housing",
+      "category": "World & geography",
+      "unit": "percent",
+      "prompt": "What share of the urban population of {place} lived in households classified as slums in {year}?",
+      "scope": "Use the published UN-Habitat series. It considers deprivations in water, sanitation, living space, housing durability or tenure.",
+      "route": "Estimate the scale of informal or severely underserved neighbourhoods in the largest cities, and account for conditions in smaller towns.",
+      "factor": 1,
+      "limit": 25,
+      "min": 4,
+      "max": 95
+    },
+    "SE.PRM.ENRL.TC.ZS": {
+      "topic": "primary-class-scale",
+      "category": "People & history",
+      "unit": "pupils per teacher",
+      "prompt": "How many primary pupils were there per primary teacher in {place} in {year}?",
+      "scope": "National pupil–teacher ratio. It can differ from the headcount in a classroom.",
+      "route": "Picture an ordinary class, then allow for specialist teachers, classes that share teachers and very small rural schools.",
+      "factor": 1,
+      "limit": 35,
+      "min": 6,
+      "max": 75
+    },
+    "SH.MED.NUMW.P3": {
+      "topic": "nursing",
+      "category": "Consulting & logic",
+      "unit": "nurses and midwives per 1,000 people",
+      "prompt": "How many nurses and midwives were recorded for every 1,000 residents in {place} in {year}?",
+      "scope": "Use the reported nursing and midwifery personnel series.",
+      "route": "Estimate nurses per hospital ward and shift, then include clinics and maternity care. Compare staffing with the population the facilities serve.",
+      "factor": 1,
+      "limit": 30,
+      "min": 0.2,
+      "max": 1e+18
+    },
+    "AG.LND.AGRI.ZS": {
+      "topic": "farm-land-share",
+      "category": "World & geography",
+      "unit": "percent",
+      "prompt": "What share of land in {place} was used for agriculture in {year}?",
+      "scope": "Include arable land, permanent crops and permanent pasture.",
+      "route": "Sketch the country’s terrain and estimate the share covered by crop fields or grazing land. Dry rangeland may count even where few crops grow.",
+      "factor": 1,
+      "limit": 35,
+      "min": 4,
+      "max": 95
+    },
+    "SI.POV.GINI": {
+      "topic": "inequality",
+      "category": "Business & economics",
+      "unit": "index points",
+      "prompt": "What was the published Gini index for {place} in {year}?",
+      "scope": "The scale runs from 0 for complete equality to 100 for maximum concentration. The survey may measure income or consumption.",
+      "route": "Imagine splitting income or consumption among five groups. Think how different their shares would be and compare with an evenly split distribution.",
+      "factor": 1,
+      "limit": 22,
+      "min": 20,
+      "max": 70
+    }
+  },
+  "foodModes": {
+    "harvest": {
+      "element": "005510",
+      "sourceUnit": "tonnes",
+      "unit": "metric tonnes",
+      "prompt": "What was the total weight of {food} produced in {place} in {year}?",
+      "scope": "Use the FAOSTAT production total for {definition}.",
+      "route": "{anchor} Think about which regions can produce it and how much each farm or hectare can supply. Account for exports where they matter.",
+      "limit": 18,
+      "min": 500,
+      "factor": 1
+    },
+    "area": {
+      "element": "005312",
+      "sourceUnit": "hectares",
+      "unit": "hectares",
+      "prompt": "How much land did {place} harvest for {food} in {year}?",
+      "scope": "Harvested area for {definition}. A new harvest can count land used more than once.",
+      "route": "{anchor} Estimate annual output and divide by the mass a hectare could yield. Compare the result with the size of a farming district.",
+      "limit": 8,
+      "min": 500,
+      "factor": 1
+    },
+    "yield": {
+      "element": "005412",
+      "sourceUnit": "tonnes per hectare",
+      "unit": "kilograms per hectare",
+      "prompt": "What was the average harvested yield of {food} in {place} in {year}?",
+      "scope": "Mass per unit of harvested land for {definition}. Use the unit on the answer field.",
+      "route": "{anchor} Picture a field and work from plants per row, rows per hectare and harvest per plant. For trees, use spacing and fruit per tree.",
+      "limit": 6,
+      "min": 0.1,
+      "factor": 1000
+    },
+    "stock": {
+      "element": "005111",
+      "sourceUnit": "animals",
+      "unit": "animals",
+      "prompt": "How many {food} were kept in {place} in {year}?",
+      "scope": "Use the FAOSTAT livestock stock for {definition}, rather than animals sold or slaughtered during the year.",
+      "route": "{anchor} Estimate the farms that keep these animals and a typical herd or flock size. A stock count and an annual production count measure different things.",
+      "limit": 17,
+      "min": 5000,
+      "factor": 1
+    },
+    "eggs": {
+      "element": "005513",
+      "sourceUnit": "eggs",
+      "unit": "eggs",
+      "prompt": "How many hen eggs were produced in {place} in {year}?",
+      "scope": "Count eggs produced by hens, using FAOSTAT’s egg count.",
+      "route": "Think about how often a laying hen produces an egg, how many hens are needed to supply households and bakeries, and any trade.",
+      "limit": 16,
+      "min": 1000000.0,
+      "factor": 1
+    },
+    "imports": {
+      "element": "005611",
+      "sourceUnit": "tonnes",
+      "unit": "metric tonnes",
+      "prompt": "What was the weight of {food} imported by {place} in {year}?",
+      "scope": "Use the FAOSTAT food balance for {definition}. Includes recorded imports even if later re-exported.",
+      "route": "{anchor} Estimate local demand, then the gap domestic growers or manufacturers leave. Allow for ingredients that arrive through regional distribution hubs.",
+      "limit": 13,
+      "min": 1000,
+      "factor": 1
+    },
+    "exports": {
+      "element": "005911",
+      "sourceUnit": "tonnes",
+      "unit": "metric tonnes",
+      "prompt": "What was the weight of {food} exported by {place} in {year}?",
+      "scope": "Use the FAOSTAT food balance for {definition}. Can include re-exports.",
+      "route": "{anchor} Estimate what domestic producers can supply, what local buyers absorb and the surplus shipped abroad. Consider trading hubs and re-exports.",
+      "limit": 10,
+      "min": 1000,
+      "factor": 1
+    },
+    "supply": {
+      "element": "0645pc",
+      "sourceUnit": "kilograms per year per capita",
+      "unit": "kilograms per person",
+      "prompt": "What weight of {food} was available as food per resident in {place} in {year}?",
+      "scope": "Annual food supply for {definition}, averaged across all residents. Availability is measured before household waste.",
+      "route": "{anchor} Think in servings or packages per week. Adjust for people who rarely eat the food and for the difference between supply and what gets eaten.",
+      "limit": 12,
+      "min": 0.1,
+      "factor": 1
+    },
+    "feed": {
+      "element": "005521",
+      "sourceUnit": "tonnes",
+      "unit": "metric tonnes",
+      "prompt": "What weight of {food} went into animal feed in {place} in {year}?",
+      "scope": "Animal feed allocation in FAOSTAT’s food balance for {definition}.",
+      "route": "{anchor} Estimate animals fed this crop, feed per animal and how much of the ration this particular ingredient makes up.",
+      "limit": 12,
+      "min": 1000,
+      "factor": 1
+    }
+  },
+  "qcl": {
+    "Bananas": {
+      "topic": "banana",
+      "food": "bananas",
+      "definition": "Bananas",
+      "anchor": "Think in bunches per plant and how many plants fit on a warm, frost-free farm.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Apples": {
+      "topic": "apple",
+      "food": "apples",
+      "definition": "Apples",
+      "anchor": "Picture orchard trees laden at harvest and how much land those orchards occupy.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Potatoes": {
+      "topic": "potato",
+      "food": "potatoes",
+      "definition": "Potatoes",
+      "anchor": "A field yields far more than the potatoes on a dinner plate. Think about fresh, frozen and processed demand.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Onions": {
+      "topic": "onion",
+      "food": "onions",
+      "definition": "Onions",
+      "anchor": "Think of the onions used in a week of meals and how densely they grow in a field.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Tomatoes": {
+      "topic": "tomato",
+      "food": "tomatoes",
+      "definition": "Tomatoes",
+      "anchor": "Count demand for both fresh tomatoes and products like paste. Greenhouses can increase output per hectare.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Oranges": {
+      "topic": "orange",
+      "food": "oranges",
+      "definition": "Oranges",
+      "anchor": "Think of fruit per tree and the volume used for juice as well as whole fruit.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Grapes": {
+      "topic": "grape",
+      "food": "grapes",
+      "definition": "Grapes",
+      "anchor": "Allow for wine grapes, table grapes and grapes dried into raisins.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Pears": {
+      "topic": "pear",
+      "food": "pears",
+      "definition": "Pears",
+      "anchor": "Estimate trees per orchard, fruit per tree and the size of the orchard industry.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Peaches and nectarines": {
+      "topic": "peach",
+      "food": "peaches and nectarines",
+      "definition": "Peaches and nectarines",
+      "anchor": "These are seasonal orchard crops, also grown for canning.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Cherries": {
+      "topic": "cherry",
+      "food": "cherries",
+      "definition": "Cherries",
+      "anchor": "A cherry tree yields many small fruits, but suitable growing areas and seasons limit output.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Plums": {
+      "topic": "plum",
+      "food": "plums",
+      "definition": "Plums",
+      "anchor": "Think of orchard output and demand for dried fruit as well as fresh plums.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Lemons and limes": {
+      "topic": "lemon-lime",
+      "food": "lemons and limes",
+      "definition": "Lemons and limes",
+      "anchor": "These are usually flavouring ingredients. Estimate a smaller amount per household than for oranges.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Strawberries": {
+      "topic": "strawberry",
+      "food": "strawberries",
+      "definition": "Strawberries",
+      "anchor": "Think of trays shipped at harvest and the amount of fruit a row of plants can produce.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Blueberries": {
+      "topic": "blueberry",
+      "food": "blueberries",
+      "definition": "Blueberries",
+      "anchor": "Think of small punnets, frozen berries and the density of producing bushes.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Raspberries": {
+      "topic": "raspberry",
+      "food": "raspberries",
+      "definition": "Raspberries",
+      "anchor": "Fresh berries are perishable and some production is sold frozen. Think of commercial growing regions.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Watermelons": {
+      "topic": "watermelon",
+      "food": "watermelons",
+      "definition": "Watermelons",
+      "anchor": "Each fruit is heavy, while each vine only bears a modest number of large fruit.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Pineapples": {
+      "topic": "pineapple",
+      "food": "pineapples",
+      "definition": "Pineapples",
+      "anchor": "Think of the land suitable for this tropical crop and one heavy fruit per plant at harvest.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Papayas": {
+      "topic": "papaya",
+      "food": "papayas",
+      "definition": "Papayas",
+      "anchor": "Warm conditions limit where this fruit grows. Estimate fruit per plant and local market demand.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Avocados": {
+      "topic": "avocado",
+      "food": "avocados",
+      "definition": "Avocados",
+      "anchor": "Separate local consumption from export demand, and consider the long time needed to establish orchards.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Mangoes": {
+      "topic": "mango",
+      "food": "mangoes, mangosteens and guavas",
+      "definition": "Mangoes",
+      "anchor": "Picture the harvest from a tropical orchard and the scale of local markets.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Coconuts": {
+      "topic": "coconut",
+      "food": "coconuts",
+      "definition": "Coconuts",
+      "anchor": "Think of palms producing repeatedly and demand for oil and other coconut products.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Dates": {
+      "topic": "date",
+      "food": "dates",
+      "definition": "Dates",
+      "anchor": "Date palms concentrate around hot growing regions with reliable water. Think of bunches harvested per palm.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Figs": {
+      "topic": "fig",
+      "food": "figs",
+      "definition": "Figs",
+      "anchor": "Think of fresh and dried demand and how much growing land can support this niche fruit.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Kiwi": {
+      "topic": "kiwi",
+      "food": "kiwifruit",
+      "definition": "Kiwi",
+      "anchor": "Picture orchard vines and demand from both domestic stores and export markets.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Olives": {
+      "topic": "olive",
+      "food": "olives",
+      "definition": "Olives",
+      "anchor": "Much of the harvest becomes oil. Think in orchards and harvest per tree, not jars of table olives.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Almonds": {
+      "topic": "almond",
+      "food": "in-shell almonds",
+      "definition": "Almonds",
+      "anchor": "Think in orchards, not snack bags. The shells add mass compared with kernels sold in stores.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Cashew nuts": {
+      "topic": "cashew",
+      "food": "in-shell cashews",
+      "definition": "Cashew nuts",
+      "anchor": "Shelled nuts are only part of the weight. Estimate orchard area and in-shell yield.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Pistachios": {
+      "topic": "pistachio",
+      "food": "pistachios",
+      "definition": "Pistachios",
+      "anchor": "Think about irrigated orchards in dry climates and the output from mature trees.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Walnuts": {
+      "topic": "walnut",
+      "food": "in-shell walnuts",
+      "definition": "Walnuts",
+      "anchor": "Orchards take years to mature. Compare harvest from mature trees with the scale of snack and baking demand.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Hazelnuts": {
+      "topic": "hazelnut",
+      "food": "in-shell hazelnuts",
+      "definition": "Hazelnuts",
+      "anchor": "Think of chocolate, spreads and baking as well as bags of nuts.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Coffee, green": {
+      "topic": "coffee",
+      "food": "green coffee beans",
+      "definition": "Coffee, green",
+      "anchor": "Coffee trees supply beans before roasting. Think about growing regions, productivity and the export market.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Cocoa beans": {
+      "topic": "cocoa",
+      "food": "cocoa beans",
+      "definition": "Cocoa beans",
+      "anchor": "Work backward from chocolate demand or think about pods per tree, beans per pod and plantations.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Tea": {
+      "topic": "tea",
+      "food": "tea leaves",
+      "definition": "Tea",
+      "anchor": "Think about suitable hillsides, how often workers pick leaves and drying or processing losses.",
+      "modes": [
+        "harvest"
+      ],
+      "category": "Business & economics"
+    },
+    "Ginger, raw": {
+      "topic": "ginger",
+      "food": "raw ginger",
+      "definition": "Ginger, raw",
+      "anchor": "Ginger is often a seasoning, so consumption per person is lower than that of staple roots.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Garlic": {
+      "topic": "garlic",
+      "food": "garlic",
+      "definition": "Garlic",
+      "anchor": "Think of bulbs used over a week, food processing and the high density of bulbs in a field.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Chillies and peppers, green (Capsicum spp. and Pimenta spp.)": {
+      "topic": "green-pepper",
+      "food": "fresh chillies and peppers",
+      "definition": "Chillies and peppers, green (Capsicum spp. and Pimenta spp.)",
+      "anchor": "Estimate household and restaurant demand. Large sweet peppers and small chillies can both count.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Pepper": {
+      "topic": "pepper",
+      "food": "peppercorns",
+      "definition": "Pepper",
+      "anchor": "Think in grams of spice per household rather than kilograms of vegetables, then allow for exports.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Lentils": {
+      "topic": "lentil",
+      "food": "dry lentils",
+      "definition": "Lentils",
+      "anchor": "Estimate meals using lentils in regions where they are a staple and allow for export or import gaps.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Chickpeas": {
+      "topic": "chickpea",
+      "food": "dry chickpeas",
+      "definition": "Chickpeas",
+      "anchor": "Think about meals, hummus and flour, then reason from demand or field yields.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Beans, dry": {
+      "topic": "beans",
+      "food": "dry beans",
+      "definition": "Beans, dry",
+      "anchor": "A cooked serving weighs more than the dry beans it uses. Think in dry weight when scaling up meals.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Peas, dry": {
+      "topic": "dry-pea",
+      "food": "dry peas",
+      "definition": "Peas, dry",
+      "anchor": "Think about soups and ingredient uses, and distinguish them from green peas picked fresh.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Wheat": {
+      "topic": "wheat",
+      "food": "wheat grain",
+      "definition": "Wheat",
+      "anchor": "Picture daily bread and flour demand, plus pasta, animal feed and exports.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Maize": {
+      "topic": "maize",
+      "food": "maize grain",
+      "definition": "Maize",
+      "anchor": "Animal feed and industrial uses can dwarf corn eaten directly. Estimate land and grain yield.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Rice": {
+      "topic": "rice",
+      "food": "unmilled rice",
+      "definition": "Rice",
+      "anchor": "Allow for the husks removed before sale and multiple harvests in warm irrigated regions.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Barley": {
+      "topic": "barley",
+      "food": "barley grain",
+      "definition": "Barley",
+      "anchor": "Beer is one outlet, alongside animal feed. Think about how much grain those markets require.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Oats": {
+      "topic": "oats",
+      "food": "oat grain",
+      "definition": "Oats",
+      "anchor": "Breakfast oats are only one outlet. Feed and processed products also matter.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Rye": {
+      "topic": "rye",
+      "food": "rye grain",
+      "definition": "Rye",
+      "anchor": "Think of where rye bread and feed grains are common and how much land can grow rye.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Sorghum": {
+      "topic": "sorghum",
+      "food": "sorghum grain",
+      "definition": "Sorghum",
+      "anchor": "This grain tolerates dry growing conditions and can feed people or livestock.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Millet": {
+      "topic": "millet",
+      "food": "millet grain",
+      "definition": "Millet",
+      "anchor": "Think of dry regions where millet is a staple, and compare the area and yield with other grains.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Cassava": {
+      "topic": "cassava",
+      "food": "fresh cassava roots",
+      "definition": "Cassava",
+      "anchor": "Think of starchy roots as staple food and industrial starch inputs. Fresh roots contain plenty of water.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Sweet potatoes": {
+      "topic": "sweet-potato",
+      "food": "sweet potatoes",
+      "definition": "Sweet potatoes",
+      "anchor": "Compare yields from a root crop with the frequency it appears in local meals and processed food.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Yams": {
+      "topic": "yam",
+      "food": "yams",
+      "definition": "Yams",
+      "anchor": "Picture large starchy roots and the share of diets they supply in major growing regions.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Sugar cane": {
+      "topic": "cane",
+      "food": "sugar cane",
+      "definition": "Sugar cane",
+      "anchor": "Harvested cane is bulky and wet. Estimate stalk mass per hectare before the sugar is extracted.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Sugar beet": {
+      "topic": "beet",
+      "food": "sugar beet",
+      "definition": "Sugar beet",
+      "anchor": "Start with sugar demand, then allow for the much larger mass of roots needed to extract it.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Soybeans": {
+      "topic": "soybean",
+      "food": "soybeans",
+      "definition": "Soybeans",
+      "anchor": "Most demand comes from feed and crushing for oil. Think in fields and processing plants.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Sunflower seed": {
+      "topic": "sunflower",
+      "food": "sunflower seed",
+      "definition": "Sunflower seed",
+      "anchor": "Think of land supplying cooking oil, including the seeds crushed for it.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Rapeseed": {
+      "topic": "rapeseed",
+      "food": "rapeseed",
+      "definition": "Rapeseed",
+      "anchor": "Demand comes from edible oil, fuel and animal feed by-products. Estimate farming area and yields.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Groundnuts": {
+      "topic": "peanut",
+      "food": "groundnuts in shell",
+      "definition": "Groundnuts",
+      "anchor": "Think of peanut snacks and oil demand. The harvest includes shells.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Sesame seed": {
+      "topic": "sesame",
+      "food": "sesame seed",
+      "definition": "Sesame seed",
+      "anchor": "Small quantities go into toppings and seasonings, while oil and tahini need much larger volumes.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Natural rubber in primary forms": {
+      "topic": "rubber",
+      "food": "natural rubber",
+      "definition": "Natural rubber in primary forms",
+      "anchor": "Start with tyre demand, then estimate rubber per tyre and the share supplied from tapped trees.",
+      "modes": [
+        "harvest"
+      ],
+      "category": "Business & economics"
+    },
+    "Seed cotton": {
+      "topic": "cotton",
+      "food": "seed cotton",
+      "definition": "Seed cotton",
+      "anchor": "Think of fabric demand and add the mass of seeds separated before spinning.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Wool": {
+      "topic": "wool",
+      "food": "wool",
+      "definition": "Wool",
+      "anchor": "Think of a flock, fleeces per year and fleece mass. Wool in a garment is only part of the original fleece.",
+      "modes": [
+        "harvest"
+      ],
+      "category": "Business & economics"
+    },
+    "Honey": {
+      "topic": "honey",
+      "food": "natural honey",
+      "definition": "Honey",
+      "anchor": "Think of hives, their surplus honey per season and how many beekeepers supply the market.",
+      "modes": [
+        "harvest"
+      ],
+      "category": "Business & economics"
+    },
+    "Beer of barley, malted": {
+      "topic": "beer",
+      "food": "beer made from malted barley",
+      "definition": "Beer of barley, malted",
+      "anchor": "Estimate beer drinkers and servings per year. A litre of beer weighs about a kilogram.",
+      "modes": [
+        "harvest"
+      ],
+      "category": "Business & economics"
+    },
+    "Wine": {
+      "topic": "wine",
+      "food": "wine",
+      "definition": "Wine",
+      "anchor": "Estimate people who drink wine, bottles per year and export demand.",
+      "modes": [
+        "harvest"
+      ],
+      "category": "Business & economics"
+    },
+    "Cheese from whole cow milk": {
+      "topic": "cheese",
+      "food": "cheese from whole cow milk",
+      "definition": "Cheese from whole cow milk",
+      "anchor": "Estimate how much cheese households and restaurants use and how much milk must be processed to make it.",
+      "modes": [
+        "harvest"
+      ],
+      "category": "Business & economics"
+    },
+    "Butter of cow milk": {
+      "topic": "butter",
+      "food": "butter from cow milk",
+      "definition": "Butter of cow milk",
+      "anchor": "Think in packs per household per month, plus bakery and restaurant demand.",
+      "modes": [
+        "harvest"
+      ],
+      "category": "Business & economics"
+    },
+    "Yoghurt": {
+      "topic": "yoghurt",
+      "food": "yoghurt",
+      "definition": "Yoghurt",
+      "anchor": "Estimate portions consumed by regular buyers and the domestic dairy plants supplying them.",
+      "modes": [
+        "harvest"
+      ],
+      "category": "Business & economics"
+    },
+    "Raw milk of cattle": {
+      "topic": "milk",
+      "food": "raw cow milk",
+      "definition": "Raw milk of cattle",
+      "anchor": "Estimate dairy cows and litres per cow per day. Some milk becomes cheese, yoghurt or powder.",
+      "modes": [
+        "harvest"
+      ],
+      "category": "Business & economics"
+    },
+    "Meat, chicken": {
+      "topic": "chicken",
+      "food": "chicken meat",
+      "definition": "Meat, chicken",
+      "anchor": "Work from weekly servings, weight per serving and production needed before processing and trade.",
+      "modes": [
+        "harvest"
+      ],
+      "category": "Business & economics"
+    },
+    "Meat, pig": {
+      "topic": "pork",
+      "food": "pig meat",
+      "definition": "Meat, pig",
+      "anchor": "Think about demand for fresh pork and cured products, then compare it with herd size and slaughter weights.",
+      "modes": [
+        "harvest"
+      ],
+      "category": "Business & economics"
+    },
+    "Meat, lamb and mutton": {
+      "topic": "lamb",
+      "food": "lamb and mutton",
+      "definition": "Meat, lamb and mutton",
+      "anchor": "Estimate sheep herds, the share sold for meat each year and carcass weight.",
+      "modes": [
+        "harvest"
+      ],
+      "category": "Business & economics"
+    },
+    "Meat, turkey": {
+      "topic": "turkey",
+      "food": "turkey meat",
+      "definition": "Meat, turkey",
+      "anchor": "Some demand is seasonal, while sliced or processed turkey is sold year-round.",
+      "modes": [
+        "harvest"
+      ],
+      "category": "Business & economics"
+    },
+    "Mushrooms": {
+      "topic": "mushroom",
+      "food": "mushrooms and truffles",
+      "definition": "Mushrooms",
+      "anchor": "Picture intensive growing rooms and multiple crops per year instead of open fields.",
+      "modes": [
+        "harvest"
+      ],
+      "category": "Business & economics"
+    },
+    "Cabbages": {
+      "topic": "cabbage",
+      "food": "cabbages",
+      "definition": "Cabbages",
+      "anchor": "Estimate heavy heads per row and the size of both the fresh and fermented markets.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Carrots and turnips": {
+      "topic": "carrot",
+      "food": "carrots and turnips",
+      "definition": "Carrots and turnips",
+      "anchor": "Think of dense rows and weight per root, then scale to the farms supplying groceries and processing.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Cucumbers and gherkins": {
+      "topic": "cucumber",
+      "food": "cucumbers and gherkins",
+      "definition": "Cucumbers and gherkins",
+      "anchor": "Include greenhouse vegetables and small pickling cucumbers. Think of repeated picking over a season.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Spinach": {
+      "topic": "spinach",
+      "food": "spinach",
+      "definition": "Spinach",
+      "anchor": "Leafy greens weigh little per serving but can be harvested repeatedly. Estimate field or greenhouse output.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Pumpkins, squash and gourds": {
+      "topic": "squash",
+      "food": "pumpkins, squash and gourds",
+      "definition": "Pumpkins, squash and gourds",
+      "anchor": "Each fruit can be heavy. Think about cooking uses, processing and seasonal demand.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Eggplants": {
+      "topic": "eggplant",
+      "food": "eggplants",
+      "definition": "Eggplants",
+      "anchor": "Estimate household demand where eggplant is a staple and how many fruits one plant yields.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Cauliflowers and broccoli": {
+      "topic": "brassica",
+      "food": "cauliflower and broccoli",
+      "definition": "Cauliflowers and broccoli",
+      "anchor": "Think of heads harvested per row and consumption as fresh or frozen vegetables.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Cinnamon and cinnamon-tree flowers, raw": {
+      "topic": "cinnamon",
+      "food": "raw cinnamon and cinnamon-tree flowers",
+      "definition": "Cinnamon and cinnamon-tree flowers, raw",
+      "anchor": "A little bark flavours a lot of food. Estimate demand in small amounts per household and allow for exports.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Vanilla, raw": {
+      "topic": "vanilla",
+      "food": "raw vanilla",
+      "definition": "Vanilla, raw",
+      "anchor": "Think of tiny doses in recipes, the share using real vanilla and the labour involved in growing and pollinating orchids.",
+      "modes": [
+        "harvest",
+        "area",
+        "yield"
+      ],
+      "category": "Business & economics"
+    },
+    "Camels": {
+      "topic": "camels",
+      "food": "camels",
+      "definition": "Camels",
+      "anchor": "Think about dry regions, pastoral herds and working animals.",
+      "modes": [
+        "stock"
+      ],
+      "category": "Business & economics"
+    },
+    "Horses": {
+      "topic": "horses",
+      "food": "horses",
+      "definition": "Horses",
+      "anchor": "Estimate farms, riding centres and households that keep horses for transport, sport or work.",
+      "modes": [
+        "stock"
+      ],
+      "category": "Business & economics"
+    },
+    "Goats": {
+      "topic": "goats",
+      "food": "goats",
+      "definition": "Goats",
+      "anchor": "Goats can graze land that supports few cattle. Think in household herds as well as commercial farms.",
+      "modes": [
+        "stock"
+      ],
+      "category": "Business & economics"
+    },
+    "Sheep": {
+      "topic": "sheep",
+      "food": "sheep",
+      "definition": "Sheep",
+      "anchor": "Think about grassland, flock sizes and the share of the landscape used for grazing.",
+      "modes": [
+        "stock"
+      ],
+      "category": "Business & economics"
+    },
+    "Ducks": {
+      "topic": "ducks",
+      "food": "ducks",
+      "definition": "Ducks",
+      "anchor": "Think about poultry flocks supplying meat and eggs, and regions where duck is common.",
+      "modes": [
+        "stock"
+      ],
+      "category": "Business & economics"
+    },
+    "Chickens": {
+      "topic": "chickens",
+      "food": "chickens",
+      "definition": "Chickens",
+      "anchor": "Estimate the birds in meat and egg flocks at once. Several generations can pass through a meat farm in one year.",
+      "modes": [
+        "stock"
+      ],
+      "category": "Business & economics"
+    },
+    "Cattle": {
+      "topic": "cattle",
+      "food": "cattle",
+      "definition": "Cattle",
+      "anchor": "Think about milk cows, beef herds and the land or feed available to support them.",
+      "modes": [
+        "stock"
+      ],
+      "category": "Business & economics"
+    },
+    "Buffalo": {
+      "topic": "water-buffalo",
+      "food": "water buffalo",
+      "definition": "Buffalo",
+      "anchor": "Think about milk and working animals in regions with suitable wet or irrigated farmland.",
+      "modes": [
+        "stock"
+      ],
+      "category": "Business & economics"
+    },
+    "Swine / pigs": {
+      "topic": "pigs",
+      "food": "pigs",
+      "definition": "Swine / pigs",
+      "anchor": "Think about breeding herds plus growing pigs. Annual slaughter can be larger than the herd at one time.",
+      "modes": [
+        "stock"
+      ],
+      "category": "Business & economics"
+    },
+    "Rabbits": {
+      "topic": "rabbits",
+      "food": "rabbits",
+      "definition": "Rabbits",
+      "anchor": "Think of farms raising rabbits for meat, as covered in the national livestock series.",
+      "modes": [
+        "stock"
+      ],
+      "category": "Business & economics"
+    },
+    "Eggs from hens": {
+      "topic": "hen-eggs",
+      "food": "hen eggs",
+      "definition": "Eggs from hens",
+      "anchor": "Estimate layers and annual eggs per bird.",
+      "modes": [
+        "eggs"
+      ],
+      "category": "Business & economics"
+    }
+  },
+  "fbs": {
+    "Beer": {
+      "topic": "beer",
+      "food": "beer",
+      "definition": "Beer",
+      "anchor": "Estimate adults who drink beer, servings per week and the weight of each serving.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Wine": {
+      "topic": "wine",
+      "food": "wine",
+      "definition": "Wine",
+      "anchor": "Estimate bottles per year among drinkers, plus hospitality and exports.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Coffee and products": {
+      "topic": "coffee",
+      "food": "coffee and coffee products",
+      "definition": "Coffee and products",
+      "anchor": "Think of grams of beans used per cup, not the weight of water in the drink.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Tea (including mate)": {
+      "topic": "tea",
+      "food": "tea and mate",
+      "definition": "Tea (including mate)",
+      "anchor": "Think about dry leaves per cup and how often tea is brewed.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Fish and seafood": {
+      "topic": "fish-food",
+      "food": "fish and seafood",
+      "definition": "Fish and seafood",
+      "anchor": "Estimate seafood meals per week and allow for the source’s whole-product weight equivalents.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Crustaceans": {
+      "topic": "shellfish",
+      "food": "crustaceans such as shrimp and crab",
+      "definition": "Crustaceans",
+      "anchor": "Think about restaurant and household portions, and remember shells add to reported weight.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Butter and ghee": {
+      "topic": "butter",
+      "food": "butter and ghee",
+      "definition": "Butter and ghee",
+      "anchor": "Imagine packs bought in a month and the butter used in commercially baked foods.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Olive oil": {
+      "topic": "olive-oil",
+      "food": "olive oil",
+      "definition": "Olive oil",
+      "anchor": "Think of cooking oil used per household and the fraction that is olive oil.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Sunflower oil": {
+      "topic": "sunflower-oil",
+      "food": "sunflower oil",
+      "definition": "Sunflower oil",
+      "anchor": "Estimate cooking and processed-food oil requirements, then consider the share supplied by sunflower seeds.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Palm Oil": {
+      "topic": "palm-oil",
+      "food": "palm oil",
+      "definition": "Palm Oil",
+      "anchor": "Think about packaged foods as well as bottles of oil. An ingredient can be common even when seldom bought directly.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Soybean oil": {
+      "topic": "soy-oil",
+      "food": "soybean oil",
+      "definition": "Soybean oil",
+      "anchor": "Estimate oil used by homes and food manufacturers and allow for competing oils.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Sugar (Raw Equivalent)": {
+      "topic": "sugar",
+      "food": "sugar in raw-sugar equivalent",
+      "definition": "Sugar (Raw Equivalent)",
+      "anchor": "Think about sugar in drinks and processed foods as well as bags bought for home use.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Milk - Excluding Butter": {
+      "topic": "milk",
+      "food": "milk and milk products excluding butter",
+      "definition": "Milk - Excluding Butter",
+      "anchor": "Think of drinking milk, cheese and yoghurt. The figures express processed dairy in milk-equivalent weight.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Meat, total": {
+      "topic": "meat",
+      "food": "meat",
+      "definition": "Meat, total",
+      "anchor": "Estimate servings per week and allow for differences between purchased portions and the source’s product equivalents.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Meat, sheep and goat": {
+      "topic": "sheep-goat-food",
+      "food": "sheep and goat meat",
+      "definition": "Meat, sheep and goat",
+      "anchor": "Think of occasions and cuisines where lamb or goat is common and how much a serving weighs.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Meat, beef and buffalo": {
+      "topic": "beef",
+      "food": "beef and buffalo meat",
+      "definition": "Meat, beef and buffalo",
+      "anchor": "Picture meals using minced beef, steaks and stews, then consider people who eat little or none.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Meat, poultry": {
+      "topic": "poultry-food",
+      "food": "poultry meat",
+      "definition": "Meat, poultry",
+      "anchor": "Estimate weekly chicken or other poultry meals and account for imports versus local supply.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Meat, pig": {
+      "topic": "pork",
+      "food": "pig meat",
+      "definition": "Meat, pig",
+      "anchor": "Consider cured meats as well as fresh pork, and differences in diets.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "All egg products": {
+      "topic": "egg-food",
+      "food": "eggs and egg products",
+      "definition": "All egg products",
+      "anchor": "Add eggs used in prepared foods to the cartons households buy.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Vegetables": {
+      "topic": "vegetable-food",
+      "food": "vegetables",
+      "definition": "Vegetables",
+      "anchor": "Picture daily vegetable servings and adjust from edible portions to amounts made available.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Fruit": {
+      "topic": "fruit-food",
+      "food": "fruit",
+      "definition": "Fruit",
+      "anchor": "Think about whole fruit, processed fruit products and seasonal supply.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Nuts": {
+      "topic": "nuts-food",
+      "food": "nuts",
+      "definition": "Nuts",
+      "anchor": "Think about small servings, baking and processed foods.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Pulses": {
+      "topic": "pulses-food",
+      "food": "pulses",
+      "definition": "Pulses",
+      "anchor": "Think about dried beans and lentils used in everyday meals. Cooked weights include added water.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Maize": {
+      "topic": "maize",
+      "food": "maize",
+      "definition": "Maize",
+      "anchor": "Remember feed and industrial uses alongside tortillas, porridge and other food uses.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports",
+        "feed"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Wheat": {
+      "topic": "wheat",
+      "food": "wheat",
+      "definition": "Wheat",
+      "anchor": "Think of flour in bread, pasta and baked foods. Allow for flour extraction losses and the source’s grain equivalent.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports",
+        "feed"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Rice": {
+      "topic": "rice",
+      "food": "rice",
+      "definition": "Rice",
+      "anchor": "Estimate dry rice used per meal and meals per week. Cooked rice contains added water.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Barley": {
+      "topic": "barley",
+      "food": "barley",
+      "definition": "Barley",
+      "anchor": "Estimate feed and malting demand separately, then compare that with local harvests.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports",
+        "feed"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Oats": {
+      "topic": "oats",
+      "food": "oats",
+      "definition": "Oats",
+      "anchor": "Think of porridge and granola, plus the quantities eaten by livestock.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports",
+        "feed"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Cassava": {
+      "topic": "cassava",
+      "food": "cassava",
+      "definition": "Cassava",
+      "anchor": "Think of the staple and processing markets, and the fraction used to feed animals.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports",
+        "feed"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Potatoes": {
+      "topic": "potato",
+      "food": "potatoes",
+      "definition": "Potatoes",
+      "anchor": "Think of fresh potatoes and processed products such as fries and crisps.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports",
+        "feed"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Bananas": {
+      "topic": "banana",
+      "food": "bananas",
+      "definition": "Bananas",
+      "anchor": "Estimate fruit eaten per person per week and whether the climate allows a local harvest.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Apples": {
+      "topic": "apple",
+      "food": "apples",
+      "definition": "Apples",
+      "anchor": "Consider snacks, juice and processed foods, and whether orchards can meet demand year-round.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Oranges": {
+      "topic": "orange",
+      "food": "oranges",
+      "definition": "Oranges",
+      "anchor": "Allow for juice and whole fruit, with imports filling gaps between harvests.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Onions": {
+      "topic": "onion",
+      "food": "onions",
+      "definition": "Onions",
+      "anchor": "Think about how often a meal starts with an onion. Compare that demand with harvest and storage capacity.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Tomatoes": {
+      "topic": "tomato",
+      "food": "tomatoes",
+      "definition": "Tomatoes",
+      "anchor": "Estimate both fresh and canned or paste demand, then think about domestic supply by season.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Lemons and limes": {
+      "topic": "lemon-lime",
+      "food": "lemons and limes",
+      "definition": "Lemons and limes",
+      "anchor": "Estimate smaller quantities used in cooking and drinks, plus demand in hospitality.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Pineapples": {
+      "topic": "pineapple",
+      "food": "pineapples",
+      "definition": "Pineapples",
+      "anchor": "Think of canned and fresh demand separately, and where growing conditions permit local supply.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Plantains": {
+      "topic": "plantain",
+      "food": "plantains",
+      "definition": "Plantains",
+      "anchor": "Think in staple portions, not just snacks. Plantains can replace rice or potatoes in meals.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Groundnuts": {
+      "topic": "peanut",
+      "food": "groundnuts",
+      "definition": "Groundnuts",
+      "anchor": "Think of nuts, peanut butter and oil processing.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports",
+        "feed"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Cocoa beans": {
+      "topic": "cocoa",
+      "food": "cocoa beans",
+      "definition": "Cocoa beans",
+      "anchor": "Think about the chocolate industry and whether it buys beans from growers abroad.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Grapes and products (excl wine)": {
+      "topic": "grape",
+      "food": "grapes and grape products excluding wine",
+      "definition": "Grapes and products (excl wine)",
+      "anchor": "Think of table grapes, juice and dried products. Leave wine out.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    },
+    "Honey": {
+      "topic": "honey",
+      "food": "honey",
+      "definition": "Honey",
+      "anchor": "Estimate jars bought per household and compare demand with output from local hives.",
+      "modes": [
+        "supply",
+        "imports",
+        "exports"
+      ],
+      "category": "Sports & everyday"
+    }
+  },
+  "energy": {
+    "solar_electricity": {
+      "topic": "solar",
+      "category": "Technology",
+      "unit": "terawatt-hours",
+      "prompt": "How much electricity did {place} generate from solar power in {year}?",
+      "scope": "Annual electricity generation. Count power generated within the country.",
+      "route": "Estimate installed panels or farms and sunny hours. The full nameplate rating is only reached under favourable conditions.",
+      "limit": 24,
+      "min": 0.15,
+      "max": 1e+18,
+      "factor": 1
+    },
+    "solar_share_elec": {
+      "topic": "solar",
+      "category": "Technology",
+      "unit": "percent",
+      "prompt": "What share of electricity generated in {place} came from solar power in {year}?",
+      "scope": "Share of domestic electricity generation. Imported electricity is excluded.",
+      "route": "Estimate installed panels or farms and sunny hours. The full nameplate rating is only reached under favourable conditions. Compare the result with generation from all other sources.",
+      "limit": 21,
+      "min": 2,
+      "max": 98,
+      "factor": 1
+    },
+    "wind_electricity": {
+      "topic": "wind",
+      "category": "Technology",
+      "unit": "terawatt-hours",
+      "prompt": "How much electricity did {place} generate from wind power in {year}?",
+      "scope": "Annual electricity generation. Count power generated within the country.",
+      "route": "Estimate turbines, megawatts per turbine and the fraction of the year they effectively run at full power. Offshore and onshore fleets can differ.",
+      "limit": 24,
+      "min": 0.15,
+      "max": 1e+18,
+      "factor": 1
+    },
+    "wind_share_elec": {
+      "topic": "wind",
+      "category": "Technology",
+      "unit": "percent",
+      "prompt": "What share of electricity generated in {place} came from wind power in {year}?",
+      "scope": "Share of domestic electricity generation. Imported electricity is excluded.",
+      "route": "Estimate turbines, megawatts per turbine and the fraction of the year they effectively run at full power. Offshore and onshore fleets can differ. Compare the result with generation from all other sources.",
+      "limit": 21,
+      "min": 2,
+      "max": 98,
+      "factor": 1
+    },
+    "hydro_electricity": {
+      "topic": "hydro",
+      "category": "Technology",
+      "unit": "terawatt-hours",
+      "prompt": "How much electricity did {place} generate from hydropower in {year}?",
+      "scope": "Annual electricity generation. Count power generated within the country.",
+      "route": "Think of rivers and large dams, then estimate how much water falls and how far it drops. Seasonal flows and reservoirs matter.",
+      "limit": 24,
+      "min": 0.15,
+      "max": 1e+18,
+      "factor": 1
+    },
+    "hydro_share_elec": {
+      "topic": "hydro",
+      "category": "Technology",
+      "unit": "percent",
+      "prompt": "What share of electricity generated in {place} came from hydropower in {year}?",
+      "scope": "Share of domestic electricity generation. Imported electricity is excluded.",
+      "route": "Think of rivers and large dams, then estimate how much water falls and how far it drops. Seasonal flows and reservoirs matter. Compare the result with generation from all other sources.",
+      "limit": 21,
+      "min": 2,
+      "max": 98,
+      "factor": 1
+    },
+    "nuclear_electricity": {
+      "topic": "nuclear",
+      "category": "Technology",
+      "unit": "terawatt-hours",
+      "prompt": "How much electricity did {place} generate from nuclear power in {year}?",
+      "scope": "Annual electricity generation. Count power generated within the country.",
+      "route": "Estimate reactors and typical output from a reactor. These stations usually run for long periods between refuelling and maintenance stops.",
+      "limit": 24,
+      "min": 0.15,
+      "max": 1e+18,
+      "factor": 1
+    },
+    "nuclear_share_elec": {
+      "topic": "nuclear",
+      "category": "Technology",
+      "unit": "percent",
+      "prompt": "What share of electricity generated in {place} came from nuclear power in {year}?",
+      "scope": "Share of domestic electricity generation. Imported electricity is excluded.",
+      "route": "Estimate reactors and typical output from a reactor. These stations usually run for long periods between refuelling and maintenance stops. Compare the result with generation from all other sources.",
+      "limit": 21,
+      "min": 2,
+      "max": 98,
+      "factor": 1
+    },
+    "coal_electricity": {
+      "topic": "coal",
+      "category": "Technology",
+      "unit": "terawatt-hours",
+      "prompt": "How much electricity did {place} generate from coal-fired power in {year}?",
+      "scope": "Annual electricity generation. Count power generated within the country.",
+      "route": "Estimate coal stations, average generating capacity and running hours. The share depends on fuel supply and competing generation.",
+      "limit": 24,
+      "min": 0.15,
+      "max": 1e+18,
+      "factor": 1
+    },
+    "coal_share_elec": {
+      "topic": "coal",
+      "category": "Technology",
+      "unit": "percent",
+      "prompt": "What share of electricity generated in {place} came from coal-fired power in {year}?",
+      "scope": "Share of domestic electricity generation. Imported electricity is excluded.",
+      "route": "Estimate coal stations, average generating capacity and running hours. The share depends on fuel supply and competing generation. Compare the result with generation from all other sources.",
+      "limit": 21,
+      "min": 2,
+      "max": 98,
+      "factor": 1
+    },
+    "gas_electricity": {
+      "topic": "gas",
+      "category": "Technology",
+      "unit": "terawatt-hours",
+      "prompt": "How much electricity did {place} generate from gas-fired power in {year}?",
+      "scope": "Annual electricity generation. Count power generated within the country.",
+      "route": "Estimate the fleet of gas turbines and how much of the year they run. Some plants serve peak loads, while others run regularly.",
+      "limit": 24,
+      "min": 0.15,
+      "max": 1e+18,
+      "factor": 1
+    },
+    "gas_share_elec": {
+      "topic": "gas",
+      "category": "Technology",
+      "unit": "percent",
+      "prompt": "What share of electricity generated in {place} came from gas-fired power in {year}?",
+      "scope": "Share of domestic electricity generation. Imported electricity is excluded.",
+      "route": "Estimate the fleet of gas turbines and how much of the year they run. Some plants serve peak loads, while others run regularly. Compare the result with generation from all other sources.",
+      "limit": 21,
+      "min": 2,
+      "max": 98,
+      "factor": 1
+    },
+    "biofuel_electricity": {
+      "topic": "biofuel",
+      "category": "Technology",
+      "unit": "terawatt-hours",
+      "prompt": "How much electricity did {place} generate from bioenergy in {year}?",
+      "scope": "Annual electricity generation. Count power generated within the country.",
+      "route": "Consider facilities burning biomass or generating from biogas. Feedstock limits how many plants can run year-round.",
+      "limit": 24,
+      "min": 0.15,
+      "max": 1e+18,
+      "factor": 1
+    },
+    "biofuel_share_elec": {
+      "topic": "biofuel",
+      "category": "Technology",
+      "unit": "percent",
+      "prompt": "What share of electricity generated in {place} came from bioenergy in {year}?",
+      "scope": "Share of domestic electricity generation. Imported electricity is excluded.",
+      "route": "Consider facilities burning biomass or generating from biogas. Feedstock limits how many plants can run year-round. Compare the result with generation from all other sources.",
+      "limit": 21,
+      "min": 2,
+      "max": 98,
+      "factor": 1
+    },
+    "oil_electricity": {
+      "topic": "oil",
+      "category": "Technology",
+      "unit": "terawatt-hours",
+      "prompt": "How much electricity did {place} generate from oil-fired power in {year}?",
+      "scope": "Annual electricity generation. Count power generated within the country.",
+      "route": "Consider island grids and backup plants where oil-fired generators are common. Include operating time as well as capacity.",
+      "limit": 24,
+      "min": 0.15,
+      "max": 1e+18,
+      "factor": 1
+    },
+    "oil_share_elec": {
+      "topic": "oil",
+      "category": "Technology",
+      "unit": "percent",
+      "prompt": "What share of electricity generated in {place} came from oil-fired power in {year}?",
+      "scope": "Share of domestic electricity generation. Imported electricity is excluded.",
+      "route": "Consider island grids and backup plants where oil-fired generators are common. Include operating time as well as capacity. Compare the result with generation from all other sources.",
+      "limit": 21,
+      "min": 2,
+      "max": 98,
+      "factor": 1
+    },
+    "electricity_demand": {
+      "topic": "demand",
+      "category": "Technology",
+      "unit": "terawatt-hours",
+      "prompt": "How much electricity did {place} need in {year}?",
+      "scope": "Use the dataset’s annual electricity demand, including net imports.",
+      "route": "Estimate homes and their electricity use, then add factories, shops, offices and other large users. Account for very hot or cold weather.",
+      "limit": 29,
+      "min": 2,
+      "max": 1e+18,
+      "factor": 1
+    },
+    "electricity_generation": {
+      "topic": "generation",
+      "category": "Technology",
+      "unit": "terawatt-hours",
+      "prompt": "How much electricity was generated within {place} in {year}?",
+      "scope": "Use annual domestic generation. Electricity imported from another country is not generated locally.",
+      "route": "Estimate continuous electricity needs across households, business and industry, then allow for net imports or exports.",
+      "limit": 25,
+      "min": 3,
+      "max": 1e+18,
+      "factor": 1
+    },
+    "electricity_demand_per_capita": {
+      "topic": "demand",
+      "category": "Technology",
+      "unit": "kilowatt-hours per person",
+      "prompt": "What was the annual electricity demand per resident in {place} in {year}?",
+      "scope": "Whole-economy demand divided by population, including businesses and industry.",
+      "route": "Picture appliances and climate control in an average home. Share that among residents, then add their share of commercial and industrial use.",
+      "limit": 26,
+      "min": 350,
+      "max": 1e+18,
+      "factor": 1
+    },
+    "net_elec_imports_share_demand": {
+      "topic": "electricity-imports",
+      "category": "Technology",
+      "unit": "percent",
+      "prompt": "How much of {place}’s electricity demand in {year} was met by net imports?",
+      "scope": "Imports minus exports, expressed as a share of electricity demand.",
+      "route": "Picture the size of domestic generation and which neighbours are connected to the grid. Check if domestic demand outstrips what local plants can produce.",
+      "limit": 20,
+      "min": 1,
+      "max": 95,
+      "factor": 1
+    },
+    "carbon_intensity_elec": {
+      "topic": "grid-carbon",
+      "category": "Science & nature",
+      "unit": "grams of CO₂ per kilowatt-hour",
+      "prompt": "How much CO₂ was emitted per kilowatt-hour of electricity generated in {place} in {year}?",
+      "scope": "Use Ember’s electricity generation emissions intensity as compiled by OWID.",
+      "route": "Estimate which generators dominate the grid. Wind and nuclear add little operational carbon, while gas and especially coal raise the average.",
+      "limit": 30,
+      "min": 20,
+      "max": 1100,
+      "factor": 1
+    },
+    "biofuel_consumption": {
+      "topic": "fuel-bio",
+      "category": "Business & economics",
+      "unit": "terawatt-hours",
+      "prompt": "How much biofuel energy was used in {place} in {year}?",
+      "scope": "Energy content of biofuels consumed, as reported in the underlying energy data.",
+      "route": "Start with the volume of road fuel used and the typical share blended from ethanol or biodiesel. Allow for differences in energy per litre.",
+      "limit": 20,
+      "min": 0.15,
+      "max": 1e+18,
+      "factor": 1
+    },
+    "oil_consumption": {
+      "topic": "fuel-oil",
+      "category": "Business & economics",
+      "unit": "terawatt-hours",
+      "prompt": "How much energy did {place} consume from oil in {year}?",
+      "scope": "Use the Energy Institute’s oil consumption series as compiled by OWID. Count fuel energy.",
+      "route": "Estimate the size of the vehicle fleet and its annual fuel use, then add freight, aviation and industrial uses. A litre of road fuel holds roughly ten kWh of energy.",
+      "limit": 29,
+      "min": 10,
+      "max": 1e+18,
+      "factor": 1
+    },
+    "gas_consumption": {
+      "topic": "fuel-gas",
+      "category": "Business & economics",
+      "unit": "terawatt-hours",
+      "prompt": "How much energy did {place} consume from natural gas in {year}?",
+      "scope": "Use the Energy Institute’s gas consumption series. Count fuel energy before conversion to electricity.",
+      "route": "Estimate gas for space heating, industrial boilers and power stations separately. Their relative importance depends on climate and infrastructure.",
+      "limit": 26,
+      "min": 5,
+      "max": 1e+18,
+      "factor": 1
+    },
+    "coal_consumption": {
+      "topic": "fuel-coal",
+      "category": "Business & economics",
+      "unit": "terawatt-hours",
+      "prompt": "How much energy did {place} consume from coal in {year}?",
+      "scope": "Fuel energy consumed, including coal used outside electricity generation.",
+      "route": "Estimate coal power station fuel needs, then include industrial uses such as steelmaking. Electricity output is less than the fuel energy that goes in.",
+      "limit": 24,
+      "min": 5,
+      "max": 1e+18,
+      "factor": 1
+    },
+    "energy_per_capita": {
+      "topic": "all-energy",
+      "category": "Science & nature",
+      "unit": "kilowatt-hours per person",
+      "prompt": "How much primary energy was used per resident in {place} in {year}?",
+      "scope": "Annual primary energy use per person. Includes transport and heating fuel as well as energy used to generate electricity.",
+      "route": "Add driving and heating fuel to your estimate of electricity. Then account for industry and conversion losses, and share it across residents.",
+      "limit": 26,
+      "min": 2000,
+      "max": 1e+18,
+      "factor": 1
+    }
+  },
+  "baseball": {
+    "HR": {
+      "topic": "baseball-HR",
+      "category": "Sports & everyday",
+      "fields": [
+        "HR"
+      ],
+      "unit": "home runs",
+      "prompt": "How many home runs did the {team} hit in {year}?",
+      "scope": "Count home runs hit by the team during the regular season.",
+      "route": "Estimate home runs across an ordinary game and multiply by the number of games. Ballparks, lineups and era all affect that rate.",
+      "limit": 42,
+      "factor": 1
+    },
+    "R": {
+      "topic": "baseball-R",
+      "category": "Sports & everyday",
+      "fields": [
+        "R",
+        "G"
+      ],
+      "unit": "runs per game",
+      "prompt": "How many runs did the {team} score per game in {year}?",
+      "scope": "Divide regular-season runs scored by games played.",
+      "route": "Think about innings with runners on base and the fraction of those runners who score. One big inning can move the average.",
+      "limit": 42,
+      "factor": 1
+    },
+    "attendance": {
+      "topic": "baseball-attendance",
+      "category": "Sports & everyday",
+      "fields": [
+        "attendance",
+        "Ghome"
+      ],
+      "unit": "spectators per home game",
+      "prompt": "How many fans did the {team} draw per home game in {year}?",
+      "scope": "Reported season attendance divided by home games. Attendance can reflect tickets sold.",
+      "route": "Estimate the ballpark’s capacity and how full it is on weeknights versus weekends. Include the less popular games when averaging.",
+      "limit": 40,
+      "factor": 1
+    },
+    "SB": {
+      "topic": "baseball-SB",
+      "category": "Sports & everyday",
+      "fields": [
+        "SB"
+      ],
+      "unit": "stolen bases",
+      "prompt": "How many bases did the {team} steal in {year}?",
+      "scope": "Count successful steals in the regular season.",
+      "route": "Estimate opportunities with a runner on first and second base open, then the fraction with a successful steal. Tactics vary by era and lineup.",
+      "limit": 42,
+      "factor": 1
+    },
+    "CG": {
+      "topic": "baseball-CG",
+      "category": "Sports & everyday",
+      "fields": [
+        "CG"
+      ],
+      "unit": "complete games",
+      "prompt": "How many complete games did pitchers for the {team} record in {year}?",
+      "scope": "Count regular-season games in which one pitcher pitched the entire game for the team.",
+      "route": "Think about how often the starting pitcher lasts through the last inning. Modern relief pitching has made complete games rare.",
+      "limit": 40,
+      "factor": 1
+    },
+    "SO": {
+      "topic": "baseball-SO",
+      "category": "Sports & everyday",
+      "fields": [
+        "SO",
+        "AB"
+      ],
+      "unit": "strikeouts per 100 at-bats",
+      "prompt": "How often did {team} batters strike out per 100 at-bats in {year}?",
+      "scope": "Batter strikeouts divided by official at-bats, times 100. Walks are excluded from at-bats.",
+      "route": "Estimate how often a batter makes an out and how often that out is a strikeout. Pitching and hitting styles vary by era.",
+      "limit": 42,
+      "factor": 100
+    },
+    "BB": {
+      "topic": "baseball-BB",
+      "category": "Sports & everyday",
+      "fields": [
+        "BB",
+        "G"
+      ],
+      "unit": "walks per game",
+      "prompt": "How many walks did the {team} draw per game in {year}?",
+      "scope": "Divide batting walks by regular-season games played.",
+      "route": "Estimate how many batters come to the plate in a typical game and the fraction who see four balls before the plate appearance ends.",
+      "limit": 34,
+      "factor": 1
+    },
+    "RA": {
+      "topic": "baseball-RA",
+      "category": "Sports & everyday",
+      "fields": [
+        "RA",
+        "G"
+      ],
+      "unit": "runs allowed per game",
+      "prompt": "How many runs did the {team} allow per game in {year}?",
+      "scope": "Divide regular-season runs allowed by games played.",
+      "route": "Picture the average opposing batting lineup. Think of innings where pitching keeps the bases empty versus innings when several runners reach.",
+      "limit": 30,
+      "factor": 1
+    },
+    "X3B": {
+      "topic": "baseball-X3B",
+      "category": "Sports & everyday",
+      "fields": [
+        "X3B"
+      ],
+      "unit": "triples",
+      "prompt": "How many triples did the {team} hit in {year}?",
+      "scope": "Count triples hit during the regular season.",
+      "route": "Picture how often a ball reaches the deep outfield and a runner can make third before the throw. Ballpark shape matters.",
+      "limit": 35,
+      "factor": 1
+    },
+    "SHO": {
+      "topic": "baseball-SHO",
+      "category": "Sports & everyday",
+      "fields": [
+        "SHO"
+      ],
+      "unit": "shutouts",
+      "prompt": "How many shutouts did the {team} record in {year}?",
+      "scope": "Use team pitching shutouts in the regular season.",
+      "route": "Estimate how often the opposing team scores no runs. One bad inning is enough to prevent a shutout.",
+      "limit": 30,
+      "factor": 1
+    }
+  }
+}

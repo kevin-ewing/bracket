@@ -1,5 +1,5 @@
 import {scoreStyle} from './score-style.js';
-export const VERSION = 3;
+export const VERSION = 5;
 export const EPOCH = '2026-11-10';
 export const DAY = 86400000;
 export const today = (now = new Date()) => now.toISOString().slice(0, 10);

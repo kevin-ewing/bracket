@@ -32,7 +32,7 @@ test('Daily schedule is date-only, mixed, stable, and excludes duplicate entitie
  assert.deepEqual(getQuestions('2026-11-10','practice1').map(q=>q.id),getQuestions('2026-11-10','practice2').map(q=>q.id));
 });
 test('Frozen bank contains screened estimation questions across ten subjects',()=>{
- assert.ok(questionCount>=200);assert.equal(Object.keys(categoryCounts).length,10);
+ assert.ok(questionCount>=3660);assert.ok(bank.filter(q=>q.id.startsWith('world-')).length>=40);assert.ok(!bank.some(q=>/^element-|^fermi-(sheet|golf-solid|penny-scale)-/.test(q.id)));assert.equal(Object.keys(categoryCounts).length,10);
  assert.equal(new Set(bank.map(q=>q.id)).size,bank.length);
  for(const q of bank){assert.ok(Number.isFinite(q.answer)&&q.answer>=1e-9&&q.answer<=1e18,q.id);assert.ok(q.source.url.startsWith('https://'),q.id);assert.ok(q.source.name&&q.clue&&q.unit&&q.prompt&&q.entity,q.id);assert.ok(q.steps.length>=2,q.id);assert.equal(scoreInterval(q.answer*.9,q.answer*1.1,q.answer),905,q.id);}
 });
